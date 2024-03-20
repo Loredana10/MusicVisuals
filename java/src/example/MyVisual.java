@@ -14,9 +14,15 @@ public class MyVisual extends Visual {
     Minim m;
     AudioInput ai;
     AudioPlayer ap;
-    
     AudioBuffer b;
 
+    int mode = 0;
+
+    float[] lerpedBuffer;
+    float y = 0;
+    float smoothedY = 0;
+    float smoothedAmplitude = 0;
+    
     public void settings() {
         size(1024, 500);
 
@@ -36,6 +42,7 @@ public class MyVisual extends Visual {
         ap = m.loadFile("java\\data\\Post Malone, Swae Lee - Sunflower (Spider-Man_ Into the Spider-Verse) (256 kbps).mp3");
         ap.play();
         b = ap.mix;
+        colorMode(HSB);
 
         // Call this instead to read audio from the microphone
         startListening();
@@ -51,8 +58,51 @@ public class MyVisual extends Visual {
         }
     }
 
+    float off = 0;
+    
+    float lerpedAvg = 0;
+    float lerped = 0;
+
     public void draw() {
         background(0);
+        float halfH = height / 2;
+        float average = 0;
+        float sum = 0;
+        off += 1;
+        // Calculate sum and average of the samples
+        // Also lerp each element of buffer;
+        for(int i = 0 ; i < b.size() ; i ++)
+        {
+            sum += abs(b.get(i));
+            lerpedBuffer[i] = lerp(lerpedBuffer[i], b.get(i), 0.05f);
+        }
+        average = sum / (float) b.size();
+
+        smoothedAmplitude = lerp(smoothedAmplitude, average, 0.1f);
+        
+        float cx = width / 2;
+        float cy = height / 2;
+
+        float tot = 0;
+        for(int i = 0 ; i < b.size() ; i ++)
+        {
+            tot += abs(b.get(i));
+        }
+
+        float avg = tot / b.size();
+
+        lerpedAvg = lerp(lerpedAvg, avg, 0.1f);
+        lerped = lerp(lerped, y, 0.1f);
+
+        switch (mode) {
+			case 0:
+                background(0);
+            break;
+
+            case 1:
+            break;
+        }
+
         try {
             // Call this if you want to use FFT data
             calculateFFT();
@@ -66,5 +116,7 @@ public class MyVisual extends Visual {
         calculateAverageAmplitude();
         wf.render();
         abv.render();
+
+
     }
 }
