@@ -1,10 +1,21 @@
 package example;
 
 import ie.tudublin.*;
+import ddf.minim.AudioBuffer;
+import ddf.minim.AudioInput;
+import ddf.minim.AudioPlayer;
+import ddf.minim.Minim;
+import processing.core.PApplet;
 
 public class MyVisual extends Visual {
     WaveForm wf;
     AudioBandsVisual abv;
+
+    Minim m;
+    AudioInput ai;
+    AudioPlayer ap;
+    
+    AudioBuffer b;
 
     public void settings() {
         size(1024, 500);
@@ -21,6 +32,10 @@ public class MyVisual extends Visual {
 
         // Call loadAudio to load an audio file to process
         // loadAudio("heroplanet.mp3");
+        m = new Minim(this);
+        ap = m.loadFile("java\\data\\Post Malone, Swae Lee - Sunflower (Spider-Man_ Into the Spider-Verse) (256 kbps).mp3");
+        ap.play();
+        b = ap.mix;
 
         // Call this instead to read audio from the microphone
         startListening();
