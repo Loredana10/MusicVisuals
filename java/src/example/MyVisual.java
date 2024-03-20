@@ -95,11 +95,14 @@ public class MyVisual extends Visual {
         lerped = lerp(lerped, y, 0.1f);
 
         switch (mode) {
-			case 0:
+			case 0: //grainny
                 background(0);
             break;
 
-            case 1:
+            case 1: //loredana
+            break;
+
+            case 2: //ella
             break;
         }
 
