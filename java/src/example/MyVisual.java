@@ -6,15 +6,16 @@ public class MyVisual extends Visual {
     WaveForm wf;
     AudioBandsVisual abv;
     int mode = 0;
+    float angle = 0;
 
     public void settings() {
         size(1024, 500);
 
         // Use this to make fullscreen
-        // fullScreen();
+        //fullScreen();
 
         // Use this to make fullscreen and use P3D for 3D graphics
-        // fullScreen(P3D, SPAN);
+        //fullScreen(P3D, SPAN);
     }
 
     public void setup() {
@@ -31,6 +32,9 @@ public class MyVisual extends Visual {
     }
 
     public void keyPressed() {
+        if (key >= '0' && key <= '2') {
+			mode = key - '0';
+		}
         if (key == ' ') {
             getAudioPlayer().cue(0);
             getAudioPlayer().play();
@@ -38,7 +42,7 @@ public class MyVisual extends Visual {
     }
 
     public void draw() {
-        // background(0);
+        background(0);
         // try {
         //     // Call this if you want to use FFT data
         //     calculateFFT();
@@ -61,7 +65,46 @@ public class MyVisual extends Visual {
             break;
 
             case 2: //Loredana
+
+            //SPIDER
+
+            // Increment angle for swinging motion
+            angle += 0.02;
+
+            // Clear background
+            background(255);
+            
+            // Calculate swinging motion
+            float swing = sin(angle) * 50;
+
+            //cobweb
+            stroke(0);
+            line(width / 2 + swing, 0, width / 2 + swing, height / 2);
+
+            // Body
+            fill(0);
+            ellipse(width/2 + swing, height/2, 30, 30);
+            
+            // Legs on right side
+            drawLeg(width/1.97f + swing, height/2, 30, PI/3);
+            drawLeg(width/1.97f + swing, height/2, 30, PI/6);
+            drawLeg(width/1.97f + swing, height/2, 30, -PI/6);
+            drawLeg(width/1.97f + swing, height/2, 30, -PI/3);
+
+            // Legs on the left side
+            drawLeg(width/2.02f + swing, height/2, 30, -2*PI/3);
+            drawLeg(width/2.02f + swing, height/2, 30, -5*PI/6);
+            drawLeg(width/2.02f + swing, height/2, 30, PI);
+            drawLeg(width/2.02f + swing, height/2, 30, 5*PI/6);
+
+        
             break;
         }
+    }
+
+    void drawLeg(float x, float y, float len, float angle) {
+        float dx = len * cos(angle);
+        float dy = len * sin(angle);
+        line(x, y, x + dx, y + dy);
     }
 }
