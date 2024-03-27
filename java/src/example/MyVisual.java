@@ -52,7 +52,6 @@ public class MyVisual extends Visual {
         calculateAverageAmplitude();
         wf.render();
         abv.render();
-
         switch(mode){
             case 0: //Gráinne 
             background(0);
