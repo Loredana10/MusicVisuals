@@ -5,7 +5,7 @@ import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
-import processing.core.PApplet;
+import processing.core.PApplet; 
 
 public class MyVisual extends Visual {
     WaveForm wf;
