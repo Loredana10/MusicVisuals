@@ -1,6 +1,7 @@
 package example;
 
 import ie.tudublin.*;
+import processing.core.PShape;
 
 public class MyVisual extends Visual {
     WaveForm wf;
@@ -8,8 +9,11 @@ public class MyVisual extends Visual {
     int mode = 0;
     float angle = 0;
 
+    PShape spider_head;
+    float ry;
+
     public void settings() {
-        size(1024, 500);
+        size(2048, 1000, P3D);
 
         // Use this to make fullscreen
         //fullScreen();
@@ -27,6 +31,16 @@ public class MyVisual extends Visual {
         // Call this instead to read audio from the microphone
         // startListening();
 
+        try
+        {
+            spider_head = loadShape("data\\spiderman1.obj");
+        } 
+        catch (Exception e) 
+        {
+            e.printStackTrace();
+            System.err.println("Error loading shape file: " + e.getMessage());
+        }
+
         wf = new WaveForm(this);
         abv = new AudioBandsVisual(this);
     }
@@ -39,6 +53,19 @@ public class MyVisual extends Visual {
             getAudioPlayer().cue(0);
             getAudioPlayer().play();
         }
+    }
+
+    void drawWaveform(float amplitude, float x, float y, float centerX, float centerY) 
+    {
+        float distance = dist(x, y, centerX, centerY); // Calculate distance from center
+        float maxDistance = dist(0, 0, width / 2, height / 2); // Maximum distance from center
+        float mappedDistance = map(distance, 0, maxDistance, 0, 1); // Map distance to range [0, 1]
+        float newSize = map(amplitude, 0, 1, 10, 400) * mappedDistance; // Enlarge based on amplitude and distance
+        float hue = map(amplitude, 0, 1, 0, 255);
+        fill(hue, 255, 255);
+        noStroke();
+        rectMode(CENTER);
+        rect(x, y, newSize, newSize);
     }
 
     public void draw() {
@@ -59,6 +86,15 @@ public class MyVisual extends Visual {
         switch(mode){
             case 0: //Gráinne 
             background(0);
+            
+            ry += 0.02;
+    
+            translate(width/2, height/2 + 100, -200);
+            rotateZ(PI);
+            rotateY(ry);
+            shape(spider_head);
+            // ambientLight(255, 255, 255);
+            // pointLight(0, 100, 100, 100, -spider_head.height, 1000);
             break;
 
             case 1: //Ella
