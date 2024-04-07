@@ -86,9 +86,6 @@ public class MyVisual extends Visual {
         switch(mode){
             case 0: //Gráinne 
             background(0);
-            
-            ry += 0.02;
-    
             translate(width/2, height/2 + 100, -200);
             rotateZ(PI);
             rotateY(ry);
