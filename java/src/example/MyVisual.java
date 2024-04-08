@@ -54,7 +54,7 @@ public class MyVisual extends Visual {
         // startListening();
 
         try {
-            spider_head = loadShape("data\\spiderman1.obj");
+            spider_head = loadShape("data\\spiderman.obj");
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println("Error loading shape file: " + e.getMessage());
