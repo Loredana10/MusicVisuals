@@ -3,6 +3,7 @@ package example;
 import ie.tudublin.*;
 import processing.core.PApplet;
 import processing.core.PShape;
+import processing.core.PVector;
 import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
@@ -28,13 +29,13 @@ public class MyVisual extends Visual {
     // EndlessHexagonTunnel hexagonTunnel;
 
     public void settings() {
-        size(2048, 1000, P3D);
+        //size(2048, 1000, P3D);
 
         // Use this to make fullscreen
         //fullScreen();
 
         // Use this to make fullscreen and use P3D for 3D graphics
-        //fullScreen(P3D, SPAN);
+        fullScreen(P3D, SPAN);
     }
 
     public void setup() {
@@ -184,6 +185,34 @@ public class MyVisual extends Visual {
                 drawLeg(width / 2.02f + swing, height / 2, 30, -5 * PI / 6);
                 drawLeg(width / 2.02f + swing, height / 2, 30, PI);
                 drawLeg(width / 2.02f + swing, height / 2, 30, 5 * PI / 6);
+                
+
+                //IRREGULAR SHAPE
+                //calculating the amplitude of the signal
+                float amplitude = ab.level() * 1000;
+
+                // vertices of the irregular shape
+                PVector[] vertices = {
+                    new PVector(width / 2 - 700, height / 2 - 200),
+                    new PVector(width / 2 + 600, height / 2 - 400),
+                    new PVector(width / 2 + 900, height / 2 - 100),
+                    new PVector(width / 2 + 850, height / 2 + 200),
+                    new PVector(width / 2 + 400, height / 2 + 400),
+                    new PVector(width / 2 + 50, height / 2 + 450),
+                    new PVector(width / 2 - 600, height / 2 + 100)
+                };
+
+                //drawing lines between vertices
+                for (int i = 0; i < vertices.length - 1; i++) {
+                    float weight = map(amplitude, 0, 1000, 1, 10); // Map amplitude to line thickness
+                    strokeWeight(weight);
+                    line(vertices[i].x, vertices[i].y, vertices[i+1].x, vertices[i+1].y);
+                }
+                
+                //drawing two additional lines to create edge
+                float weight = map(amplitude, 0, 1000, 1, 10); // Map amplitude to line thickness
+                strokeWeight(weight);
+                line(vertices[0].x, vertices[0].y, vertices[vertices.length - 1].x, vertices[vertices.length - 1].y);
 
                 break;
         }
