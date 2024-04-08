@@ -55,7 +55,7 @@ public class MyVisual extends Visual {
         // startListening();
 
         try {
-            spider_head = loadShape("data\\spiderman.obj");
+            spider_head = loadShape("data\\spiderman1.obj");
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println("Error loading shape file: " + e.getMessage());
@@ -102,6 +102,7 @@ public class MyVisual extends Visual {
         switch(mode){
             case 0: //Gráinne 
             background(0);
+            lights();
   
             ry += 0.02;
 
@@ -142,11 +143,12 @@ public class MyVisual extends Visual {
                 drawWaveform(amplitude, posX, posY, centerX, centerY);
             }  
 
-            translate(width/2, height/2 + 100, -200);
+            translate(width/2, height/2 + 60, -250);
             rotateZ(PI);
             rotateY(ry);
+            fill(255, 0, 0);
             shape(spider_head);
-            // ambientLight(255, 255, 255);
+            ambientLight(255, 0, 0);
             // pointLight(0, 100, 100, 100, -spider_head.height, 1000);
             break;
 
