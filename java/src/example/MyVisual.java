@@ -61,6 +61,8 @@ public class MyVisual extends Visual {
             System.err.println("Error loading shape file: " + e.getMessage());
         }
 
+        spider_head.setFill(color(255, 0, 0));
+
         wf = new WaveForm(this);
         abv = new AudioBandsVisual(this);
         // hexagonTunnel = new EndlessHexagonTunnel(this);
@@ -148,8 +150,6 @@ public class MyVisual extends Visual {
             rotateY(ry);
             fill(255, 0, 0);
             shape(spider_head);
-            ambientLight(255, 0, 0);
-            // pointLight(0, 100, 100, 100, -spider_head.height, 1000);
             break;
 
             case 1: //Ella
