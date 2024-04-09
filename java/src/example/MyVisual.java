@@ -168,6 +168,8 @@ public class MyVisual extends Visual {
                 // Calculate swinging motion
                 float swing = sin(angle) * 50;
 
+                //SPIDER 1
+
                 //cobweb
                 stroke(0);
                 line(width / 2 + swing, 0, width / 2 + swing, height / 2);
@@ -187,6 +189,29 @@ public class MyVisual extends Visual {
                 drawLeg(width / 2.02f + swing, height / 2, 30, -5 * PI / 6);
                 drawLeg(width / 2.02f + swing, height / 2, 30, PI);
                 drawLeg(width / 2.02f + swing, height / 2, 30, 5 * PI / 6);
+
+                //SPIDER 2
+
+                float offsetX = 300; // Positioning the second spider to the right
+                //cobweb
+                stroke(0);
+                line(width / 2 + swing + offsetX, 0, width / 2 + swing + offsetX, height / 2.4f);
+
+                // Body
+                fill(0);
+                ellipse(width / 2 + swing + offsetX, height / 2.4f, 30, 30);
+
+                // Legs on right side
+                drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, PI / 3);
+                drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, PI / 6);
+                drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, -PI / 6);
+                drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, -PI / 3);
+
+                // Legs on the left side
+                drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, -2 * PI / 3);
+                drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, -5 * PI / 6);
+                drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, PI);
+                drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, 5 * PI / 6);
                 
 
                 //IRREGULAR SHAPE
@@ -195,13 +220,13 @@ public class MyVisual extends Visual {
 
                 // vertices of the irregular shape
                 PVector[] vertices = {
-                    new PVector(width / 2 - 700, height / 2 - 200),
-                    new PVector(width / 2 + 600, height / 2 - 400),
-                    new PVector(width / 2 + 900, height / 2 - 100),
-                    new PVector(width / 2 + 850, height / 2 + 200),
-                    new PVector(width / 2 + 400, height / 2 + 400),
-                    new PVector(width / 2 + 50, height / 2 + 450),
-                    new PVector(width / 2 - 600, height / 2 + 100)
+                    new PVector(width / 2 - 650, height / 2 - 150),
+                    new PVector(width / 2 + 350, height / 2 - 350),
+                    new PVector(width / 2 + 650, height / 2 - 80),
+                    new PVector(width / 2 + 500, height / 2 + 50),
+                    new PVector(width / 2 + 450, height / 2 + 250),
+                    new PVector(width / 2 + 200, height / 2 + 300),
+                    new PVector(width / 2 - 450, height / 2 + 100)
                 };
 
                 //drawing lines between vertices
