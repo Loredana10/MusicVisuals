@@ -80,7 +80,7 @@ public class MyVisual extends Visual {
     }
 
     public void keyPressed() {
-        if (key >= '0' && key <= '2') {
+        if (key >= '0' && key <= '5') {
             mode = key - '0';
         }
         if (key == ' ') {
@@ -99,6 +99,25 @@ public class MyVisual extends Visual {
         noStroke();
         rectMode(CENTER);
         rect(x, y, newSize, newSize);
+    }
+
+    void flower(float x, float y, float size)
+    {
+        strokeWeight(size);
+        stroke(random(120,255), random(255), random(255));
+
+        translate (x,y);
+
+        for(int i =0; i<10; i++)
+        {
+            rotate(TWO_PI/ 10);
+            line(0,0,3 * size, 0);
+        }
+
+        strokeWeight(0);
+        fill(random(120,255), random(255), random(255));
+        ellipse(0, 0, 15, 15);
+
     }
 
     float off = 0;
@@ -167,7 +186,7 @@ public class MyVisual extends Visual {
 
             case 1: //Ella
                 // hexagonTunnel.repaint();
-                // break;
+            break;
 
             case 2: //Loredana
 
@@ -259,7 +278,7 @@ public class MyVisual extends Visual {
                     line(i, cy, i, smoothedX);
                 }
                 
-                break;
+            break;
 
             
             case 3: //Ella
@@ -269,6 +288,9 @@ public class MyVisual extends Visual {
             break;
 
             case 5: //Gráinne
+
+            flower(random(width), random(height), random(10,150));
+    
             break;
 
         }
