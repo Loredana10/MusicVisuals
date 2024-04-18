@@ -26,6 +26,12 @@ public class MyVisual extends Visual {
     PShape spider_head;
     float ry;
 
+    //code to smooth amplitude 
+    float[] lerpedBuffer;
+    float y = 0;
+    float smoothedY = 0;
+    float smoothedAmplitude = 0;
+
     // EndlessHexagonTunnel hexagonTunnel;
 
     public void settings() {
@@ -66,6 +72,11 @@ public class MyVisual extends Visual {
         wf = new WaveForm(this);
         abv = new AudioBandsVisual(this);
         // hexagonTunnel = new EndlessHexagonTunnel(this);
+
+        y = height / 2;
+        smoothedY = y;
+
+        lerpedBuffer = new float[width];
     }
 
     public void keyPressed() {
@@ -89,6 +100,8 @@ public class MyVisual extends Visual {
         rectMode(CENTER);
         rect(x, y, newSize, newSize);
     }
+
+    float off = 0;
 
     public void draw() {
         background(0);
@@ -157,6 +170,22 @@ public class MyVisual extends Visual {
                 // break;
 
             case 2: //Loredana
+
+                //Calculating the sum and average of the samples
+                //Learping each element in the buffer
+                float average = 0;
+                float sum = 0;
+
+                off += 1;
+
+                for(int i = 0; i < ab.size(); i++) {
+                    sum += abs(ab.get(i));
+                    lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.05f);
+                }
+                average = sum / (float) ab.size();
+            
+                smoothedAmplitude = lerp(smoothedAmplitude, average, 0.1f);
+
                 //SPIDER
 
                 // Increment angle for swinging motion
