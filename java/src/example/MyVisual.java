@@ -175,6 +175,10 @@ public class MyVisual extends Visual {
                 //Learping each element in the buffer
                 float average = 0;
                 float sum = 0;
+                float cx = width /2;
+                float cy = height;
+            
+                float smoothedX = cx;
 
                 off += 1;
 
@@ -241,6 +245,19 @@ public class MyVisual extends Visual {
                 drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, -5 * PI / 6);
                 drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, PI);
                 drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, 5 * PI / 6);
+
+
+                //adding a red gradient sine wave 
+                for(int i = 0 ; i < ab.size() ; i ++) { 
+                    float hue = map(i, 0, ab.size(), 0, 32);
+                    stroke(hue, 255, 255); 
+                    noFill();
+                    // Smooth the x-coordinate of the line endpoint
+                    float lerpedX = cx + lerpedBuffer[i] * cx;
+                    smoothedX = lerp(smoothedX, lerpedX, 0.1f); 
+            
+                    line(i, cy, i, smoothedX);
+                }
                 
                 break;
         }
