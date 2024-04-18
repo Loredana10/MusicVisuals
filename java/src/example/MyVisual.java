@@ -260,6 +260,17 @@ public class MyVisual extends Visual {
                 }
                 
                 break;
+
+            
+            case 3: //Ella
+            break;
+
+            case 4: //Loredana
+            break;
+
+            case 5: //Gráinne
+            break;
+
         }
     }
 
