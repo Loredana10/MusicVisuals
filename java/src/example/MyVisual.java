@@ -242,34 +242,6 @@ public class MyVisual extends Visual {
                 drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, PI);
                 drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, 5 * PI / 6);
                 
-
-                //IRREGULAR SHAPE
-                //calculating the amplitude of the signal
-                float amplitude = ab.level() * 1000;
-
-                // vertices of the irregular shape
-                PVector[] vertices = {
-                    new PVector(width / 2 - 650, height / 2 - 150),
-                    new PVector(width / 2 + 350, height / 2 - 350),
-                    new PVector(width / 2 + 650, height / 2 - 80),
-                    new PVector(width / 2 + 500, height / 2 + 50),
-                    new PVector(width / 2 + 450, height / 2 + 250),
-                    new PVector(width / 2 + 200, height / 2 + 300),
-                    new PVector(width / 2 - 450, height / 2 + 100)
-                };
-
-                //drawing lines between vertices
-                for (int i = 0; i < vertices.length - 1; i++) {
-                    float weight = map(amplitude, 0, 1000, 1, 10); // Map amplitude to line thickness
-                    strokeWeight(weight);
-                    line(vertices[i].x, vertices[i].y, vertices[i+1].x, vertices[i+1].y);
-                }
-                
-                //drawing two additional lines to create edge
-                float weight = map(amplitude, 0, 1000, 1, 10); // Map amplitude to line thickness
-                strokeWeight(weight);
-                line(vertices[0].x, vertices[0].y, vertices[vertices.length - 1].x, vertices[vertices.length - 1].y);
-
                 break;
         }
     }
