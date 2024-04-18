@@ -266,16 +266,16 @@ public class MyVisual extends Visual {
                 drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, 5 * PI / 6);
 
 
-                //adding a red gradient sine wave 
-                for(int i = 0 ; i < ab.size() ; i ++) { 
-                    float hue = map(i, 0, ab.size(), 0, 32);
-                    stroke(hue, 255, 255); 
+                //adding a red sine wave 
+                for(int x = 0 ; x < width ; x ++) { 
+                    int i = x % ab.size();
+                    stroke(0, 255, 255);
                     noFill();
                     // Smooth the x-coordinate of the line endpoint
                     float lerpedX = cx + lerpedBuffer[i] * cx;
-                    smoothedX = lerp(smoothedX, lerpedX, 0.1f); 
+                    smoothedX = lerp(smoothedX, lerpedX, 2f); 
             
-                    line(i, cy, i, smoothedX);
+                    line(i, cy, x, smoothedX);
                 }
                 
             break;
