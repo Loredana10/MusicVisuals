@@ -34,6 +34,12 @@ public class MyVisual extends Visual {
     float smoothedY = 0;
     float smoothedAmplitude = 0;
 
+    //code to smooth amplitude 
+    float[] lerpedBuffer;
+    float y = 0;
+    float smoothedY = 0;
+    float smoothedAmplitude = 0;
+
     // EndlessHexagonTunnel hexagonTunnel;
 
     public void settings() {
@@ -73,60 +79,58 @@ public class MyVisual extends Visual {
       
       spider_head.setFill(color(255, 0, 0));
 
-      wf = new WaveForm(this);
-      abv = new AudioBandsVisual(this);
-      // hexagonTunnel = new EndlessHexagonTunnel(this);
+        wf = new WaveForm(this);
+        abv = new AudioBandsVisual(this);
+        // hexagonTunnel = new EndlessHexagonTunnel(this);
 
-      y = height / 2;
-      smoothedY = y;
+        y = height / 2;
+        smoothedY = y;
 
-      lerpedBuffer = new float[width];
-
-
-  }
-
-  public void keyPressed() {
-    if (key >= '0' && key <= '5') {
-        mode = key - '0';
+        lerpedBuffer = new float[width];
     }
-    if (key == ' ') {
-        getAudioPlayer().cue(0);
-        getAudioPlayer().play();
+
+    public void keyPressed() {
+        if (key >= '0' && key <= '5') {
+            mode = key - '0';
+        }
+        if (key == ' ') {
+            getAudioPlayer().cue(0);
+            getAudioPlayer().play();
+        }
     }
-}
 
-void drawWaveform(float amplitude, float x, float y, float centerX, float centerY) {
-    float distance = dist(x, y, centerX, centerY); // Calculate distance from center
-    float maxDistance = dist(0, 0, width / 2, height / 2); // Maximum distance from center
-    float mappedDistance = map(distance, 0, maxDistance, 0, 1); // Map distance to range [0, 1]
-    float newSize = map(amplitude, 0, 1, 10, 400) * mappedDistance; // Enlarge based on amplitude and distance
-    float hue = map(amplitude, 0, 1, 0, 255);
-    fill(hue, 255, 255);
-    noStroke();
-    rectMode(CENTER);
-    rect(x, y, newSize, newSize);
-}
+    void drawWaveform(float amplitude, float x, float y, float centerX, float centerY) {
+        float distance = dist(x, y, centerX, centerY); // Calculate distance from center
+        float maxDistance = dist(0, 0, width / 2, height / 2); // Maximum distance from center
+        float mappedDistance = map(distance, 0, maxDistance, 0, 1); // Map distance to range [0, 1]
+        float newSize = map(amplitude, 0, 1, 10, 400) * mappedDistance; // Enlarge based on amplitude and distance
+        float hue = map(amplitude, 0, 1, 0, 255);
+        fill(hue, 255, 255);
+        noStroke();
+        rectMode(CENTER);
+        rect(x, y, newSize, newSize);
+    }
 
-void flower(float x, float y, float size)
-{
-    strokeWeight(size);
-    stroke(random(120,255), random(255), random(255));
-
-    translate (x,y);
-
-    for(int i =0; i<10; i++)
+    void flower(float x, float y, float size)
     {
-        rotate(TWO_PI/ 10);
-        line(0,0,3 * size, 0);
+        strokeWeight(size);
+        stroke(random(120,255), random(255), random(255));
+
+        translate (x,y);
+
+        for(int i =0; i<10; i++)
+        {
+            rotate(TWO_PI/ 10);
+            line(0,0,3 * size, 0);
+        }
+
+        strokeWeight(0);
+        fill(random(120,255), random(255), random(255));
+        ellipse(0, 0, 15, 15);
+
     }
 
-    strokeWeight(0);
-    fill(random(120,255), random(255), random(255));
-    ellipse(0, 0, 15, 15);
-
-}
-
-float off = 0;
+    float off = 0;
 
 public void draw() {
   background(0);
@@ -200,29 +204,32 @@ public void draw() {
 
 
     break;
+            case 1: //Ella
+                // hexagonTunnel.repaint();
+            break;
 
-    case 2: //Loredana
+            case 2: //Loredana
 
-        //Calculating the sum and average of the samples
-        //Learping each element in the buffer
-        float average = 0;
-        float sum = 0;
-        float cx = width /2;
-        float cy = height;
-    
-        float smoothedX = cx;
+                //Calculating the sum and average of the samples
+                //Learping each element in the buffer
+                float average = 0;
+                float sum = 0;
+                float cx = width /2;
+                float cy = height;
+            
+                float smoothedX = cx;
 
-        off += 1;
+                off += 1;
 
-        for(int i = 0; i < ab.size(); i++) {
-          sum += abs(ab.get(i));
-          lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.05f);
-      }
-      average = sum / (float) ab.size();
-  
-      smoothedAmplitude = lerp(smoothedAmplitude, average, 0.1f);
+                for(int i = 0; i < ab.size(); i++) {
+                    sum += abs(ab.get(i));
+                    lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.05f);
+                }
+                average = sum / (float) ab.size();
+            
+                smoothedAmplitude = lerp(smoothedAmplitude, average, 0.1f);
 
-      //SPIDER
+                //SPIDER
 
       // Increment angle for swinging motion
       angle += 0.02;
@@ -266,33 +273,35 @@ public void draw() {
       fill(0);
       ellipse(width / 2 + swing + offsetX, height / 2.4f, 30, 30);
 
-      // Legs on right side
-      drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, PI / 3);
-      drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, PI / 6);
-      drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, -PI / 6);
-      drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, -PI / 3);
-      
-      // Legs on the left side
-      drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, -2 * PI / 3);
-      drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, -5 * PI / 6);
-      drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, PI);
-      drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, 5 * PI / 6);
-      
-      //adding a red sine wave 
-      for(int x = 0 ; x < width ; x ++) { 
-        int i = x % ab.size();
-        stroke(0, 255, 255);
-        noFill();
-        // Smooth the x-coordinate of the line endpoint
-        float lerpedX = cx + lerpedBuffer[i] * cx;
-        smoothedX = lerp(smoothedX, lerpedX, 2f); 
+                // Legs on right side
+                drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, PI / 3);
+                drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, PI / 6);
+                drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, -PI / 6);
+                drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, -PI / 3);
 
-        line(i, cy, x, smoothedX);
-    }
-    
-    break;
+                // Legs on the left side
+                drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, -2 * PI / 3);
+                drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, -5 * PI / 6);
+                drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, PI);
+                drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, 5 * PI / 6);
 
-    case 3: //Ella
+
+                //adding a red sine wave 
+                for(int x = 0 ; x < width ; x ++) { 
+                    int i = x % ab.size();
+                    stroke(0, 255, 255);
+                    noFill();
+                    // Smooth the x-coordinate of the line endpoint
+                    float lerpedX = cx + lerpedBuffer[i] * cx;
+                    smoothedX = lerp(smoothedX, lerpedX, 2f); 
+            
+                    line(i, cy, x, smoothedX);
+                }
+                
+            break;
+
+            
+            case 3: //Ella
             break;
 
             case 4: //Loredana
