@@ -34,11 +34,6 @@ public class MyVisual extends Visual {
     float smoothedY = 0;
     float smoothedAmplitude = 0;
 
-    //code to smooth amplitude 
-    float[] lerpedBuffer;
-    float y = 0;
-    float smoothedY = 0;
-    float smoothedAmplitude = 0;
 
     // EndlessHexagonTunnel hexagonTunnel;
 
@@ -204,9 +199,7 @@ public void draw() {
 
 
     break;
-            case 1: //Ella
-                // hexagonTunnel.repaint();
-            break;
+          
 
             case 2: //Loredana
 
@@ -322,6 +315,7 @@ public void draw() {
         line(x, y, x + dx, y + dy);
   }
 
+  //hexagon, stars, shooting stars, confetti and lines all added for Ella's hexagon visual
   void drawHexagons(float x, float y, float outerRadius, int numHexagons, float[] ab) {
       float angleStep = TWO_PI / 6;
       float maxAmplitude = max(ab);
