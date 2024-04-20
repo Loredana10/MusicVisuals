@@ -224,59 +224,82 @@ public void draw() {
 
         //SPIDER
 
-      // Increment angle for swinging motion
-      angle += 0.02;
+        // Increment angle for swinging motion
+        angle += 0.02;
 
-      // Clear background
-      background(255);
+        // Clear background
+        background(255);
 
-      // Calculate swinging motion
-      float swing = sin(angle) * 50;
+        // Calculate swinging motion
+        float swing = sin(angle) * 50;
 
-      //SPIDER 1
+        //SPIDER 1
 
-      //cobweb
-      stroke(0);
-      line(width / 2 + swing, 0, width / 2 + swing, height / 2);
+        //cobweb
+        stroke(0);
+        line(width / 2 + swing, 0, width / 2 + swing, height / 2);
 
-      // Body
-      fill(0);
-      ellipse(width / 2 + swing, height / 2, 30, 30);
+        // Body
+        fill(0);
+        ellipse(width / 2 + swing, height / 2, 30, 30);
 
-      // Legs on right side
-      drawLeg(width / 1.97f + swing, height / 2, 30, PI / 3);
-      drawLeg(width / 1.97f + swing, height / 2, 30, PI / 6);
-      drawLeg(width / 1.97f + swing, height / 2, 30, -PI / 6);
-      drawLeg(width / 1.97f + swing, height / 2, 30, -PI / 3);
+        // Legs on right side
+        drawLeg(width / 1.97f + swing, height / 2, 30, PI / 3);
+        drawLeg(width / 1.97f + swing, height / 2, 30, PI / 6);
+        drawLeg(width / 1.97f + swing, height / 2, 30, -PI / 6);
+        drawLeg(width / 1.97f + swing, height / 2, 30, -PI / 3);
 
-      // Legs on the left side
-      drawLeg(width / 2.02f + swing, height / 2, 30, -2 * PI / 3);
-      drawLeg(width / 2.02f + swing, height / 2, 30, -5 * PI / 6);
-      drawLeg(width / 2.02f + swing, height / 2, 30, PI);
-      drawLeg(width / 2.02f + swing, height / 2, 30, 5 * PI / 6);
+        // Legs on the left side
+        drawLeg(width / 2.02f + swing, height / 2, 30, -2 * PI / 3);
+        drawLeg(width / 2.02f + swing, height / 2, 30, -5 * PI / 6);
+        drawLeg(width / 2.02f + swing, height / 2, 30, PI);
+        drawLeg(width / 2.02f + swing, height / 2, 30, 5 * PI / 6);
 
-      //SPIDER 2
+        //SPIDER 2
 
-      float offsetX = 300; // Positioning the second spider to the right
-      //cobweb
-      stroke(0);
-      line(width / 2 + swing + offsetX, 0, width / 2 + swing + offsetX, height / 2.4f);
+        float offsetX = 300; // Positioning the second spider to the right
+        //cobweb
+        stroke(0);
+        line(width / 2 + swing + offsetX, 0, width / 2 + swing + offsetX, height / 2.4f);
 
-      // Body
-      fill(0);
-      ellipse(width / 2 + swing + offsetX, height / 2.4f, 30, 30);
+        // Body
+        fill(0);
+        ellipse(width / 2 + swing + offsetX, height / 2.4f, 30, 30);
 
-    // Legs on right side
-    drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, PI / 3);
-    drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, PI / 6);
-    drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, -PI / 6);
-    drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, -PI / 3);
+        // Legs on right side
+        drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, PI / 3);
+        drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, PI / 6);
+        drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, -PI / 6);
+        drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, -PI / 3);
 
-    // Legs on the left side
-    drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, -2 * PI / 3);
-    drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, -5 * PI / 6);
-    drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, PI);
-    drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, 5 * PI / 6);
+        // Legs on the left side
+        drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, -2 * PI / 3);
+        drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, -5 * PI / 6);
+        drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, PI);
+        drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, 5 * PI / 6);
+
+        //SPIDER 3
+
+        float offsetX2 = -300; // Positioning the third spider to the left
+        //cobweb
+        stroke(0);
+        line(width / 2 + swing + offsetX2, 0, width / 2 + swing + offsetX2, height / 2.4f);
+
+        // Body
+        fill(0);
+        ellipse(width / 2 + swing + offsetX2, height / 2.4f, 30, 30);
+
+        // Legs on right side
+        drawLeg(width / 1.97f + swing + offsetX2, height / 2.4f, 30, PI / 3);
+        drawLeg(width / 1.97f + swing + offsetX2, height / 2.4f, 30, PI / 6);
+        drawLeg(width / 1.97f + swing + offsetX2, height / 2.4f, 30, -PI / 6);
+        drawLeg(width / 1.97f + swing + offsetX2, height / 2.4f, 30, -PI / 3);
+
+        // Legs on the left side
+        drawLeg(width / 2.02f + swing + offsetX2, height / 2.4f, 30, -2 * PI / 3);
+        drawLeg(width / 2.02f + swing + offsetX2, height / 2.4f, 30, -5 * PI / 6);
+        drawLeg(width / 2.02f + swing + offsetX2, height / 2.4f, 30, PI);
+        drawLeg(width / 2.02f + swing + offsetX2, height / 2.4f, 30, 5 * PI / 6);
 
 
     //adding a red sine wave 
