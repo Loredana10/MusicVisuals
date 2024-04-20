@@ -201,28 +201,28 @@ public void draw() {
     break;
           
 
-            case 2: //Loredana
+    case 2: //Loredana
 
-                //Calculating the sum and average of the samples
-                //Learping each element in the buffer
-                float average = 0;
-                float sum = 0;
-                float cx = width /2;
-                float cy = height;
-            
-                float smoothedX = cx;
+        //Calculating the sum and average of the samples
+        //Learping each element in the buffer
+        float average = 0;
+        float sum = 0;
+        float cx = width /2;
+        float cy = height;
+    
+        float smoothedX = cx;
 
-                off += 1;
+        off += 1;
 
-                for(int i = 0; i < ab.size(); i++) {
-                    sum += abs(ab.get(i));
-                    lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.05f);
-                }
-                average = sum / (float) ab.size();
-            
-                smoothedAmplitude = lerp(smoothedAmplitude, average, 0.1f);
+        for(int i = 0; i < ab.size(); i++) {
+            sum += abs(ab.get(i));
+            lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.05f);
+        }
+        average = sum / (float) ab.size();
+    
+        smoothedAmplitude = lerp(smoothedAmplitude, average, 0.1f);
 
-                //SPIDER
+        //SPIDER
 
       // Increment angle for swinging motion
       angle += 0.02;
@@ -266,30 +266,30 @@ public void draw() {
       fill(0);
       ellipse(width / 2 + swing + offsetX, height / 2.4f, 30, 30);
 
-                // Legs on right side
-                drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, PI / 3);
-                drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, PI / 6);
-                drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, -PI / 6);
-                drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, -PI / 3);
+    // Legs on right side
+    drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, PI / 3);
+    drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, PI / 6);
+    drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, -PI / 6);
+    drawLeg(width / 1.97f + swing + offsetX, height / 2.4f, 30, -PI / 3);
 
-                // Legs on the left side
-                drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, -2 * PI / 3);
-                drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, -5 * PI / 6);
-                drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, PI);
-                drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, 5 * PI / 6);
+    // Legs on the left side
+    drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, -2 * PI / 3);
+    drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, -5 * PI / 6);
+    drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, PI);
+    drawLeg(width / 2.02f + swing + offsetX, height / 2.4f, 30, 5 * PI / 6);
 
 
-                //adding a red sine wave 
-                for(int x = 0 ; x < width ; x ++) { 
-                    int i = x % ab.size();
-                    stroke(0, 255, 255);
-                    noFill();
-                    // Smooth the x-coordinate of the line endpoint
-                    float lerpedX = cx + lerpedBuffer[i] * cx;
-                    smoothedX = lerp(smoothedX, lerpedX, 2f); 
-            
-                    line(i, cy, x, smoothedX);
-                }
+    //adding a red sine wave 
+    for(int x = 0 ; x < width ; x ++) { 
+        int i = x % ab.size();
+        stroke(0, 255, 255);
+        noFill();
+        // Smooth the x-coordinate of the line endpoint
+        float lerpedX = cx + lerpedBuffer[i] * cx;
+        smoothedX = lerp(smoothedX, lerpedX, 2f); 
+
+        line(x, cy, x, smoothedX);
+    }
                 
             break;
 
