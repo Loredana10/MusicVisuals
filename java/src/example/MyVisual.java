@@ -196,7 +196,12 @@ public void draw() {
     case 1: //Ella
         // hexagonTunnel.repaint()
         drawHexagons(width / 2.0f, height / 2.0f, 200.0f + getAmplitude(), 20, getSmoothedBands());
+        int numColors = 360; // Number of colors in the rainbow
+        int[] colors = new int[numColors]; // Array to hold rainbow colors
 
+        for (int i = 0; i < numColors; i++) {
+            colors[i] = color(i, 100, 100); // Hue ranges from 0 to 360
+          }
 
     break;
           
@@ -313,7 +318,7 @@ public void draw() {
         float dx = len * cos(angle);
         float dy = len * sin(angle);
         line(x, y, x + dx, y + dy);
-  }
+  }  
 
   //hexagon, stars, shooting stars, confetti and lines all added for Ella's hexagon visual
   void drawHexagons(float x, float y, float outerRadius, int numHexagons, float[] ab) {
