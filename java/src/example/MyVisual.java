@@ -27,6 +27,8 @@ public class MyVisual extends Visual {
     float ry;
     float c = map(getAmplitude(), 0, 500, 0, 255);
 
+    float maxAmplitude; // Declare maxAmplitude variable
+
 
     //code to smooth amplitude 
     float[] lerpedBuffer;
@@ -37,6 +39,8 @@ public class MyVisual extends Visual {
     //patricles
     int num = 1500; //amount of particles
     Particle[] p = new Particle[num]; //array of particles
+
+    
 
 
     // EndlessHexagonTunnel hexagonTunnel;
@@ -51,6 +55,9 @@ public class MyVisual extends Visual {
         fullScreen(P3D, SPAN);
     }
 
+    int numColors = 360; // Number of colors in the rainbow
+    int[] colors = new int[numColors]; // Array to hold rainbow colors
+
     public void setup() {
         startMinim();
 
@@ -61,6 +68,7 @@ public class MyVisual extends Visual {
         ap = minim.loadFile("data\\Post Malone, Swae Lee - Sunflower (Spider-Man_ Into the Spider-Verse) (256 kbps).mp3", 1024);
         ap.play();
         ab = ap.mix;
+        colorMode(HSB);
 
         // Call loadAudio to load an audio file to process
         loadAudio("data\\Post Malone, Swae Lee - Sunflower (Spider-Man_ Into the Spider-Verse) (256 kbps).mp3");
@@ -93,6 +101,14 @@ public class MyVisual extends Visual {
             p[i] = new Particle(new PVector(random(width), random(height)), 100);
         }
         stroke(255);
+
+        colorMode(HSB, 360, 100, 100); // Set color mode to HSB
+
+    // Generate rainbow colors (not used for drawing)
+    for (int i = 0; i < numColors; i++) {
+      colors[i] = color(i, 100, 100); // Hue ranges from 0 to 360
+    }
+
     }
 
     public void keyPressed() {
@@ -204,12 +220,13 @@ public void draw() {
         shape(spider_head);
         break;
 
-    case 1: //Ella
-        // hexagonTunnel.repaint()
-        drawHexagons(width / 2.0f, height / 2.0f, 200.0f + getAmplitude(), 20, getSmoothedBands());
+        case 1: //Ella
+            // hexagonTunnel.repaint()
+            drawHexagons(width / 2.0f, height / 2.0f, 200.0f + getAmplitude(), 20, getSmoothedBands());
+            float c = map(amplitude, 0, 500, 0, 255);
+            fill(c, 0, 0);
 
-
-    break;
+        break;
           
 
         case 2: //Loredana
@@ -326,8 +343,31 @@ public void draw() {
                     
         break;
 
-        case 3: //Ella
-        break;
+        case 3: //Ella starburst visual
+            background(0);
+            translate(width / 2, height / 2);
+            maxAmplitude = max(ab.toArray());
+            int numSegments = 100;
+            float segmentAngle = TWO_PI / numSegments;
+            float tunnelRadius = min(width, height) / 3;
+            
+
+            for (int i = 0; i < numSegments; i++) {
+                float angle = i * segmentAngle;
+                float x1 = cos(angle) * tunnelRadius;
+                float y1 = sin(angle) * tunnelRadius;
+                float x2 = cos(angle + segmentAngle) * tunnelRadius;
+                float y2 = sin(angle + segmentAngle) * tunnelRadius;
+                float freq = ab.get(i % ab.size()) * 3000; // Adjust frequency range
+                float z1 = map(freq, 0, maxAmplitude * 10, -200, 200); // Adjust mapping to control tunnel depth
+                float z2 = map(ab.get((i + 1) % ab.size()) * 3000, 0, maxAmplitude * 10, -200, 200);
+
+                float hue = map(i, 0, numSegments, 0, 255); // Map hue based on segment index
+                stroke(hue, 255, 255); // Set stroke color
+                line(0, 0, x1, y1); // Draw line from center to the current point
+                line(0, 0, x2, y2); // Draw line from center to the next point
+            }
+            break;
 
         case 4: //Loredana
             background(255);
