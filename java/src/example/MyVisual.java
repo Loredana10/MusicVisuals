@@ -345,10 +345,11 @@ public void draw() {
                     
         break;
 
-        case 3: background(0);
+        case 3: 
+            background(0);
             translate(width / 2, height / 2);
             maxAmplitude = max(ab.toArray());
-            int numSegments = 100;
+            int numSegments = 200;
             float segmentAngle = TWO_PI / numSegments;
             float tunnelRadius = min(width, height) / 3;
         
