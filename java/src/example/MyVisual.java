@@ -343,31 +343,50 @@ public void draw() {
                     
         break;
 
-        case 3: //Ella starburst visual
-            background(0);
-            translate(width / 2, height / 2);
-            maxAmplitude = max(ab.toArray());
-            int numSegments = 100;
-            float segmentAngle = TWO_PI / numSegments;
-            float tunnelRadius = min(width, height) / 3;
-            
-
-            for (int i = 0; i < numSegments; i++) {
-                float angle = i * segmentAngle;
-                float x1 = cos(angle) * tunnelRadius;
-                float y1 = sin(angle) * tunnelRadius;
-                float x2 = cos(angle + segmentAngle) * tunnelRadius;
-                float y2 = sin(angle + segmentAngle) * tunnelRadius;
-               // float freq = ab.get(i % ab.size()) * 3000; // Adjust frequency range
-               // float z1 = map(freq, 0, maxAmplitude * 10, -200, 200); // Adjust mapping to control tunnel depth
-               // float z2 = map(ab.get((i + 1) % ab.size()) * 3000, 0, maxAmplitude * 10, -200, 200);
-
-                float hue = map(i, 0, numSegments, 0, 255); // Map hue based on segment index
-                stroke(hue, 255, 255); // Set stroke color
-                line(0, 0, x1, y1); // Draw line from center to the current point
-                line(0, 0, x2, y2); // Draw line from center to the next point
-            }
-            break;
+        case 3: // Ella starburst visual
+        background(0);
+        translate(width / 2, height / 2);
+    
+        // Calculate the maximum amplitude from the audio buffer
+        float maxAmplitude = max(ab.toArray());
+    
+        // Define the number of segments in the starburst
+        int numSegments = 100;
+    
+        // Calculate the angle between each segment
+        float segmentAngle = TWO_PI / numSegments;
+    
+        // Define the initial radius of the starburst
+        float tunnelRadius = min(width, height) / 3;
+    
+        // Loop through each segment
+        for (int i = 0; i < numSegments; i++) {
+            // Calculate the angle of the current segment
+            float angle = i * segmentAngle;
+    
+            // Calculate the coordinates of the start point of the current segment
+            float x1 = cos(angle) * tunnelRadius;
+            float y1 = sin(angle) * tunnelRadius;
+    
+            // Calculate the coordinates of the end point of the current segment
+            float x2 = cos(angle + segmentAngle) * tunnelRadius;
+            float y2 = sin(angle + segmentAngle) * tunnelRadius;
+    
+            // Map hue based on segment index
+            float hue = map(i, 0, numSegments, 0, 255);
+    
+            // Set stroke color based on amplitude
+            float bandAmplitude = getAudioBuffer().get(i % getAudioBuffer().size());
+            float strokeBrightness = map(bandAmplitude, 0, maxAmplitude, 50, 255);
+            stroke(hue, 255, strokeBrightness);
+    
+            // Draw line from center to the current point
+            line(0, 0, x1, y1);
+            // Draw line from center to the next point
+            line(0, 0, x2, y2);
+        }
+        break;
+    
 
         case 4: //Loredana
             background(255);
