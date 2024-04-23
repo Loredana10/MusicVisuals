@@ -219,15 +219,14 @@ public void draw() {
         shape(spider_head);
         break;
 
-        case 1: //Ella
-            // hexagonTunnel.repaint()
-            drawHexagons(width / 2.0f, height / 2.0f, 200.0f + getAmplitude(), 20, getSmoothedBands());
-            float c = map(amplitude, 0, 500, 0, 255);
-            fill(c, 0, 0);
-            
-            colorMode(HSB, 360, 100, 300); // Set color mode to HSB
+        case 1:
+            //Loredana
+            background(255);
 
-
+            //particles
+            for(int i = 0; i < num; i ++){
+                p[i].update(p, i);
+            }
         break;
           
 
@@ -369,13 +368,16 @@ public void draw() {
         break;
     
 
-        case 4: //Loredana
-            background(255);
+        case 4: 
+         //Ella
+            // hexagonTunnel.repaint()
+            drawHexagons(width / 2.0f, height / 2.0f, 200.0f + getAmplitude(), 20, getSmoothedBands());
+            float c = map(amplitude, 0, 500, 0, 255);
+            fill(c, 0, 0);
+            
+            colorMode(HSB, 360, 100, 300); // Set color mode to HSB
 
-            //particles
-            for(int i = 0; i < num; i ++){
-                p[i].update(p, i);
-            }
+
         
         break;
 
