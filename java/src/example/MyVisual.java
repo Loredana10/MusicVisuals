@@ -111,7 +111,7 @@ public class MyVisual extends Visual {
     }
 
     public void keyPressed() {
-        if (key >= '0' && key <= '5') {
+        if (key >= '0' && key <= '6') {
             mode = key - '0';
         }
         if (key == ' ') {
