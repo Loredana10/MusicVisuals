@@ -225,7 +225,7 @@ public void draw() {
             float c = map(amplitude, 0, 500, 0, 255);
             fill(c, 0, 0);
             
-            colorMode(HSB, 360, 100, 100); // Set color mode to HSB
+            colorMode(HSB, 360, 100, 300); // Set color mode to HSB
 
 
         break;
