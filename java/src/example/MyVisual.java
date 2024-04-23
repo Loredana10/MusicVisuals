@@ -68,7 +68,6 @@ public class MyVisual extends Visual {
         ap = minim.loadFile("data\\Post Malone, Swae Lee - Sunflower (Spider-Man_ Into the Spider-Verse) (256 kbps).mp3", 1024);
         ap.play();
         ab = ap.mix;
-        colorMode(HSB);
 
         // Call loadAudio to load an audio file to process
         loadAudio("data\\Post Malone, Swae Lee - Sunflower (Spider-Man_ Into the Spider-Verse) (256 kbps).mp3");
@@ -102,7 +101,7 @@ public class MyVisual extends Visual {
         }
         stroke(255);
 
-        colorMode(HSB, 360, 100, 100); // Set color mode to HSB
+        
 
     // // Generate rainbow colors (not used for drawing)
     // for (int i = 0; i < numColors; i++) {
