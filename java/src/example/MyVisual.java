@@ -111,7 +111,7 @@ public class MyVisual extends Visual {
     }
 
     public void keyPressed() {
-        if (key >= '0' && key <= '6') {
+        if (key >= '0' && key <= '5') {
             mode = key - '0';
         }
         if (key == ' ') {
@@ -345,7 +345,7 @@ public void draw() {
                     
         break;
 
-        case 6: background(0);
+        case 3: background(0);
             translate(width / 2, height / 2);
             maxAmplitude = max(ab.toArray());
             int numSegments = 100;
