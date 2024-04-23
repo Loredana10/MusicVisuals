@@ -8,9 +8,9 @@ import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
-import java.awt.*;
-import javax.swing.*;
-import java.awt.geom.GeneralPath;
+// import java.awt.*;
+// import javax.swing.*;
+// import java.awt.geom.GeneralPath;
 
 public class MyVisual extends Visual {
     WaveForm wf;
@@ -358,9 +358,9 @@ public void draw() {
                 float y1 = sin(angle) * tunnelRadius;
                 float x2 = cos(angle + segmentAngle) * tunnelRadius;
                 float y2 = sin(angle + segmentAngle) * tunnelRadius;
-                float freq = ab.get(i % ab.size()) * 3000; // Adjust frequency range
-                float z1 = map(freq, 0, maxAmplitude * 10, -200, 200); // Adjust mapping to control tunnel depth
-                float z2 = map(ab.get((i + 1) % ab.size()) * 3000, 0, maxAmplitude * 10, -200, 200);
+               // float freq = ab.get(i % ab.size()) * 3000; // Adjust frequency range
+               // float z1 = map(freq, 0, maxAmplitude * 10, -200, 200); // Adjust mapping to control tunnel depth
+               // float z2 = map(ab.get((i + 1) % ab.size()) * 3000, 0, maxAmplitude * 10, -200, 200);
 
                 float hue = map(i, 0, numSegments, 0, 255); // Map hue based on segment index
                 stroke(hue, 255, 255); // Set stroke color
