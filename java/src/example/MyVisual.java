@@ -68,7 +68,7 @@ public class MyVisual extends Visual {
         ap = minim.loadFile("data\\Post Malone, Swae Lee - Sunflower (Spider-Man_ Into the Spider-Verse) (256 kbps).mp3", 1024);
         ap.play();
         ab = ap.mix;
-        //colorMode(HSB);
+        colorMode(HSB);
 
         // Call loadAudio to load an audio file to process
         loadAudio("data\\Post Malone, Swae Lee - Sunflower (Spider-Man_ Into the Spider-Verse) (256 kbps).mp3");
@@ -102,7 +102,7 @@ public class MyVisual extends Visual {
         }
         stroke(255);
 
-        //colorMode(HSB, 360, 100, 100); // Set color mode to HSB
+        colorMode(HSB, 360, 100, 100); // Set color mode to HSB
 
     // // Generate rainbow colors (not used for drawing)
     // for (int i = 0; i < numColors; i++) {
@@ -136,7 +136,7 @@ public class MyVisual extends Visual {
     void flower(float x, float y, float size)
     {
         strokeWeight(size);
-        stroke(random(120,255), random(255), random(255)); //creates different sizes
+        stroke(random(120,255), random(255), random(255));
 
         translate (x,y);
 
@@ -222,8 +222,6 @@ public void draw() {
 
         case 1: //Ella
             // hexagonTunnel.repaint()
-            // colorMode(HSB);
-            // colorMode(HSB, 360, 100, 100); // Set color mode to HSB
             drawHexagons(width / 2.0f, height / 2.0f, 200.0f + getAmplitude(), 20, getSmoothedBands());
             float c = map(amplitude, 0, 500, 0, 255);
             fill(c, 0, 0);
@@ -374,18 +372,16 @@ public void draw() {
             float x2 = cos(angle + segmentAngle) * tunnelRadius;
             float y2 = sin(angle + segmentAngle) * tunnelRadius;
     
-            // Map hue based on segment index
-            float hue = map(i, 0, numSegments, 0, 255);
-    
-            // Set stroke color based on amplitude
+            // Get the amplitude of the corresponding frequency band
             float bandAmplitude = getAudioBuffer().get(i % getAudioBuffer().size());
-            float strokeBrightness = map(bandAmplitude, 0, maxAmplitude, 50, 255);
-            stroke(hue, 255, strokeBrightness);
     
-            // Draw line from center to the current point
-            line(0, 0, x1, y1);
-            // Draw line from center to the next point
-            line(0, 0, x2, y2);
+            // Calculate the burst factor based on the amplitude (adjust the burst factor as needed)
+            float burstFactor = 1 + bandAmplitude * 10;
+    
+            // Draw line from center to the current point with burst effect
+            line(0, 0, x1 * burstFactor, y1 * burstFactor);
+            // Draw line from center to the next point with burst effect
+            line(0, 0, x2 * burstFactor, y2 * burstFactor);
         }
         break;
     
