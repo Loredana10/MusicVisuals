@@ -349,7 +349,7 @@ public void draw() {
             background(0);
             translate(width / 2, height / 2);
             maxAmplitude = max(ab.toArray());
-            int numSegments = 200;
+            int numSegments = 400;
             float segmentAngle = TWO_PI / numSegments;
             float tunnelRadius = min(width, height) / 3;
         
