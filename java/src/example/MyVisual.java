@@ -68,7 +68,7 @@ public class MyVisual extends Visual {
         ap = minim.loadFile("data\\Post Malone, Swae Lee - Sunflower (Spider-Man_ Into the Spider-Verse) (256 kbps).mp3", 1024);
         ap.play();
         ab = ap.mix;
-        colorMode(HSB);
+        //colorMode(HSB);
 
         // Call loadAudio to load an audio file to process
         loadAudio("data\\Post Malone, Swae Lee - Sunflower (Spider-Man_ Into the Spider-Verse) (256 kbps).mp3");
@@ -102,7 +102,7 @@ public class MyVisual extends Visual {
         }
         stroke(255);
 
-        colorMode(HSB, 360, 100, 100); // Set color mode to HSB
+        //colorMode(HSB, 360, 100, 100); // Set color mode to HSB
 
     // // Generate rainbow colors (not used for drawing)
     // for (int i = 0; i < numColors; i++) {
@@ -136,7 +136,7 @@ public class MyVisual extends Visual {
     void flower(float x, float y, float size)
     {
         strokeWeight(size);
-        stroke(random(120,255), random(255), random(255));
+        stroke(random(120,255), random(255), random(255)); //creates different sizes
 
         translate (x,y);
 
@@ -222,6 +222,8 @@ public void draw() {
 
         case 1: //Ella
             // hexagonTunnel.repaint()
+            // colorMode(HSB);
+            // colorMode(HSB, 360, 100, 100); // Set color mode to HSB
             drawHexagons(width / 2.0f, height / 2.0f, 200.0f + getAmplitude(), 20, getSmoothedBands());
             float c = map(amplitude, 0, 500, 0, 255);
             fill(c, 0, 0);
