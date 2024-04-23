@@ -345,7 +345,7 @@ public void draw() {
                     
         break;
 
-        case 3: background(0);
+        case 6: background(0);
             translate(width / 2, height / 2);
             maxAmplitude = max(ab.toArray());
             int numSegments = 100;
