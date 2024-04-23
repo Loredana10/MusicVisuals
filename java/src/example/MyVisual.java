@@ -25,7 +25,7 @@ public class MyVisual extends Visual {
 
     PShape spider_head;
     float ry;
-    float c = map(getAmplitude(), 0, 500, 0, 255);
+    // float c = map(getAmplitude(), 0, 500, 0, 255);
 
     float maxAmplitude; // Declare maxAmplitude variable
 
@@ -55,8 +55,8 @@ public class MyVisual extends Visual {
         fullScreen(P3D, SPAN);
     }
 
-    int numColors = 360; // Number of colors in the rainbow
-    int[] colors = new int[numColors]; // Array to hold rainbow colors
+    // int numColors = 360; // Number of colors in the rainbow
+    // int[] colors = new int[numColors]; // Array to hold rainbow colors
 
     public void setup() {
         startMinim();
@@ -104,10 +104,10 @@ public class MyVisual extends Visual {
 
         colorMode(HSB, 360, 100, 100); // Set color mode to HSB
 
-    // Generate rainbow colors (not used for drawing)
-    for (int i = 0; i < numColors; i++) {
-      colors[i] = color(i, 100, 100); // Hue ranges from 0 to 360
-    }
+    // // Generate rainbow colors (not used for drawing)
+    // for (int i = 0; i < numColors; i++) {
+    //   colors[i] = color(i, 100, 100); // Hue ranges from 0 to 360
+    // }
 
     }
 
@@ -166,7 +166,7 @@ public void draw() {
     abv.render();
 
     //float c = map(amplitude, 0, 500, 0, 255);
-    fill(c, 0, 0);
+    // fill(c, 0, 0);
 
 
     switch(mode){
