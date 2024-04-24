@@ -401,7 +401,11 @@ public void draw() {
   }
 
     //hexagon, stars, shooting stars, confetti and lines all added for Ella's hexagon visual
-    void drawHexagons(float x, float y, float outerRadius, int numHexagons, float[] ab) {
+    void drawHexagons(float x, float y, float outerRadius, int numHexagons, float[] ab) 
+    {
+        if (ab == null) {
+            return; // Exit the method early if ab is null
+        }
         float angleStep = TWO_PI / 6;
         float maxAmplitude = max(ab);
         float gap = 10; // Gap between hexagons
