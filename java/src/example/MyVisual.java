@@ -404,11 +404,12 @@ public void draw() {
         float angleStep = TWO_PI / 6;
         float maxAmplitude = max(ab);
         float gap = 10; // Gap between hexagons
+        float maxOuterRadius = 400.0f + maxAmplitude;
 
         
         for (int i = 0; i < numHexagons; i++) 
         {
-            float innerRadius = outerRadius * (numHexagons - i) / numHexagons;
+            float innerRadius = maxOuterRadius * (numHexagons - i) / numHexagons;
             float brightness = map(ab[i % ab.length], 0, maxAmplitude, 50, 100); // Reactivity to music
             float newSize = map(ab[i % ab.length], 0, maxAmplitude, 50, 400); // Adjust size based on frequency
 
@@ -445,7 +446,7 @@ public void draw() {
             drawConfetti(x, y, innerRadius, outerRadius, ab[i % ab.length]);
 
 
-            outerRadius -= gap; // Adjust the outer radius for the next hexagon
+            maxOuterRadius -= gap; // Adjust the outer radius for the next hexagon
         }
     }
 
