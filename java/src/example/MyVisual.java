@@ -224,7 +224,8 @@ public void draw() {
 
         case 1:
             //Loredana
-            background(255);
+            background(0);
+            colorMode(HSB);
 
             //particles
             for(int i = 0; i < num; i ++){
@@ -234,6 +235,8 @@ public void draw() {
           
 
         case 2: //Loredana
+
+            background(0);
 
             //Calculating the sum and average of the samples
             //Learping each element in the buffer
@@ -259,20 +262,18 @@ public void draw() {
             // Increment angle for swinging motion
             angle += 0.02;
 
-            // Clear background
-            background(255);
-
+        
             // Calculate swinging motion
             float swing = sin(angle) * 50;
 
             //SPIDER 1
 
             //cobweb
-            stroke(0);
+            stroke(255);
             line(width / 2 + swing, 0, width / 2 + swing, height / 2);
 
             // Body
-            fill(0);
+            fill(255);
             ellipse(width / 2 + swing, height / 2, 30, 30);
 
             // Legs on right side
@@ -291,11 +292,11 @@ public void draw() {
 
             float offsetX = 300; // Positioning the second spider to the right
             //cobweb
-            stroke(0);
+            stroke(255);
             line(width / 2 + swing + offsetX, 0, width / 2 + swing + offsetX, height / 2.4f);
 
             // Body
-            fill(0);
+            fill(255);
             ellipse(width / 2 + swing + offsetX, height / 2.4f, 30, 30);
 
             // Legs on right side
@@ -314,11 +315,11 @@ public void draw() {
 
             float offsetX2 = -300; // Positioning the third spider to the left
             //cobweb
-            stroke(0);
+            stroke(255);
             line(width / 2 + swing + offsetX2, 0, width / 2 + swing + offsetX2, height / 2.4f);
 
             // Body
-            fill(0);
+            fill(255);
             ellipse(width / 2 + swing + offsetX2, height / 2.4f, 30, 30);
 
             // Legs on right side
@@ -374,11 +375,12 @@ public void draw() {
         case 4: 
          //Ella
             // hexagonTunnel.repaint()
-            drawHexagons(width / 2.0f, height / 2.0f, 200.0f + getAmplitude(), 20, getSmoothedBands());
+            colorMode(HSB); // Set color mode to HSB
+
+            drawHexagons(width / 2.0f, height / 2.0f, 400.0f + getAmplitude(), 20, getSmoothedBands());
             float c = map(amplitude, 0, 500, 0, 255);
-            fill(c, 0, 0);
-            
-            colorMode(HSB, 360, 100, 300); // Set color mode to HSB
+            //fill(c, 0, 0);
+            fill(c, 255, 255);
         
         break;
 
@@ -424,8 +426,8 @@ public void draw() {
 
             // Set the fill color for confetti (random colors)
             float confettiHue = random(360);
-            float confettiSaturation = random(50, 100); // Random saturation between 50 and 100
-            float confettiBrightness = random(50, 100); // Random brightness between 50 and 100
+            float confettiSaturation = random(90, 255); // Random saturation between 90 and 255
+            float confettiBrightness = random(90, 255); // Random brightness between 90 and 255
             fill(confettiHue, confettiSaturation, confettiBrightness);
 
             beginShape();
