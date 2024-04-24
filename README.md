@@ -35,6 +35,87 @@ Student Number: C22370523
 
 **Loredana:**
 
+I worked on the particles visual and the hanging spiders visual. The particle visualisation was achieved by creating a large number of ellipse particles that move around the screen in a random manner. If the distance between particles is less than the radius specified, then the particles will be connected by a line. As the particles move away from each other, the line fades away. By increasing the speed and the number of particles, I was able to obtain a visual that resembles a moving spiderweb. I dealt with all the possibilities of the particles moving off screen in the code below:
+
+```Java
+//if the position of x moves too far left, it will appear from the right side of the screen
+if (pos.x < -10){
+	pos.x = width;
+} 
+//if the position of x moves too far right, it will appear from the left side of the screen
+if (pos.x > width + 10){
+	pos.x = 0;
+}            
+//if the position of x moves too far up the screen, it will appear from the bottom of the screen
+if (pos.y < -10) {
+	pos.y = height;
+}
+//if the position of x moves too far down the screen, it will appear from the top of the screen
+if (pos.y > height + 10){
+	pos.y = 0;
+} 
+
+//Particle moves in differnt directions without going off screen by using constrain()
+vel.x = constrain(vel.x + random(-spd, spd), -max, max);
+vel.y = constrain(vel.y + random(-spd, spd), -max, max);
+```
+
+By implementing these boundary handling mechanisms and velocity constraints, the code ensures that the particles remains within the visible area of the screen while still allowing for dynamic movement in various directions. For the colour, I used map to set random particles to different shades of blue and red: 
+
+```Java
+if (chooseColour < 0.8) {
+	//setting blue colour
+	float blueHue = map(chooseColour, 0.5f, 1.0f, 170, 175);
+	stroke(blueHue, 255, 255);
+} 
+else {
+	//setting red colour
+	float redHue = map(chooseColour, 0, 0.5f, 0, 2);
+	stroke(redHue, 255, 255);   
+}
+```
+
+The second visualisation consists of three spiders swinging from a web and a red sine wave. The spiders were created using an ellipse for the body and eight lines for the legs. Each leg is drawn using a function called 'drawLeg' that specifies its starting position and angle relative to the body's center. I used the variable 'swing' to control the horizontal movement of the spiders. 
+
+```Java
+//cobweb
+stroke(255);
+line(width / 2 + swing, 0, width / 2 + swing, height / 2);
+
+// Body
+fill(255);
+ellipse(width / 2 + swing, height / 2, 30, 30);
+
+// Legs on right side
+drawLeg(width / 1.97f + swing, height / 2, 30, PI / 3);
+drawLeg(width / 1.97f + swing, height / 2, 30, PI / 6);
+drawLeg(width / 1.97f + swing, height / 2, 30, -PI / 6);
+drawLeg(width / 1.97f + swing, height / 2, 30, -PI / 3);
+
+// Legs on the left side
+drawLeg(width / 2.02f + swing, height / 2, 30, -2 * PI / 3);
+drawLeg(width / 2.02f + swing, height / 2, 30, -5 * PI / 6);
+drawLeg(width / 2.02f + swing, height / 2, 30, PI);
+drawLeg(width / 2.02f + swing, height / 2, 30, 5 * PI / 6);
+```
+
+I added a red sine wave that responds to music, which was achieved through the use of lerp and smoothing techniques. The implementation utilises a for loop to iterate over the width of the screen, ensuring that each pixel along the horizontal axis is considered for line generation.
+
+```Java
+for(int x = 0 ; x < width ; x ++) { 
+	int i = x % ab.size();
+	stroke(0, 255, 255);
+	noFill();
+	// Smooth the x-coordinate of the line endpoint
+	float lerpedX = cx + lerpedBuffer[i] * cx;
+	smoothedX = lerp(smoothedX, lerpedX, 2); 
+	
+	line(x, cy, x, smoothedX);
+}
+```
+
+
+
 # What I am most proud of in the assignment
 **Ella:**
 
