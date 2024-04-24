@@ -221,7 +221,8 @@ public void draw() {
 
         case 1:
             //Loredana
-            background(255);
+            background(0);
+            colorMode(HSB);
 
             //particles
             for(int i = 0; i < num; i ++){
@@ -371,13 +372,12 @@ public void draw() {
         case 4: 
          //Ella
             // hexagonTunnel.repaint()
+            colorMode(HSB); // Set color mode to HSB
+
             drawHexagons(width / 2.0f, height / 2.0f, 200.0f + getAmplitude(), 20, getSmoothedBands());
             float c = map(amplitude, 0, 500, 0, 255);
-            fill(c, 0, 0);
-            
-            colorMode(HSB, 360, 100, 300); // Set color mode to HSB
-
-
+            //fill(c, 0, 0);
+            fill(c, 255, 255);
         
         break;
 
@@ -417,8 +417,8 @@ public void draw() {
 
             // Set the fill color for confetti (random colors)
             float confettiHue = random(360);
-            float confettiSaturation = random(50, 100); // Random saturation between 50 and 100
-            float confettiBrightness = random(50, 100); // Random brightness between 50 and 100
+            float confettiSaturation = random(90, 255); // Random saturation between 90 and 255
+            float confettiBrightness = random(90, 255); // Random brightness between 90 and 255
             fill(confettiHue, confettiSaturation, confettiBrightness);
 
             beginShape();
