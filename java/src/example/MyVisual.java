@@ -17,6 +17,7 @@ public class MyVisual extends Visual {
     AudioBandsVisual abv;
     int mode = 0;
     float angle = 0;
+    
 
     Minim minim;
     AudioPlayer ap;
@@ -58,7 +59,9 @@ public class MyVisual extends Visual {
     // int numColors = 360; // Number of colors in the rainbow
     // int[] colors = new int[numColors]; // Array to hold rainbow colors
 
-    public void setup() {
+    public void setup()
+     {
+        frameRate(30);
         startMinim();
 
         minim = new Minim(this);
@@ -404,9 +407,12 @@ public void draw() {
         float gap = 10; // Gap between hexagons
 
         
-        for (int i = 0; i < numHexagons; i++) {
+        for (int i = 0; i < numHexagons; i++) 
+        {
             float innerRadius = outerRadius * (numHexagons - i) / numHexagons;
             float brightness = map(ab[i % ab.length], 0, maxAmplitude, 50, 100); // Reactivity to music
+            float newSize = map(ab[i % ab.length], 0, maxAmplitude, 50, 400); // Adjust size based on frequency
+
 
             if (i % 2 == 0) {
                 // Set blue color (RGB values)
@@ -415,6 +421,9 @@ public void draw() {
                 // Set orange color (RGB values)
                 fill(255, 165, 0, brightness); // Orange color
             }
+
+             // Draw the hexagon with the adjusted size
+            drawHexagon(x, y, newSize);
 
             // Set the fill color for confetti (random colors)
             float confettiHue = random(360);
@@ -439,6 +448,18 @@ public void draw() {
 
             outerRadius -= gap; // Adjust the outer radius for the next hexagon
         }
+    }
+
+    void drawHexagon(float x, float y, float size) {
+        float angleStep = TWO_PI / 6;
+        beginShape();
+        for (int j = 0; j < 6; j++) {
+            float angle = j * angleStep;
+            float hx = x + cos(angle) * size;
+            float hy = y + sin(angle) * size;
+            vertex(hx, hy);
+        }
+        endShape(CLOSE);
     }
     
     void drawLines(float x1, float y1, float x2, float y2) {
