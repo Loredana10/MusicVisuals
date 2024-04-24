@@ -441,9 +441,9 @@ public void draw() {
             endShape(CLOSE);
 
             // Draw stars, circles, rectangles, and shooting stars in the gap
-            drawStars(x, y, outerRadius, innerRadius, ab[i % ab.length]);
+            drawStars(x, y, maxOuterRadius, innerRadius, ab[i % ab.length]);
             //drawShootingStars(x, y, outerRadius, innerRadius, ab[i % ab.length]);
-            drawConfetti(x, y, innerRadius, outerRadius, ab[i % ab.length]);
+            drawConfetti(x, y, innerRadius, maxOuterRadius, ab[i % ab.length]);
 
 
             maxOuterRadius -= gap; // Adjust the outer radius for the next hexagon
