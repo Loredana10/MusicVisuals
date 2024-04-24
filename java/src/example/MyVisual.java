@@ -374,7 +374,7 @@ public void draw() {
             // hexagonTunnel.repaint()
             colorMode(HSB); // Set color mode to HSB
 
-            drawHexagons(width / 2.0f, height / 2.0f, 200.0f + getAmplitude(), 20, getSmoothedBands());
+            drawHexagons(width / 2.0f, height / 2.0f, 400.0f + getAmplitude(), 20, getSmoothedBands());
             float c = map(amplitude, 0, 500, 0, 255);
             //fill(c, 0, 0);
             fill(c, 255, 255);
