@@ -132,21 +132,22 @@ public class MyVisual extends Visual {
         rect(x, y, newSize, newSize);
     }
 
-    void flower(float x, float y, float size)
+
+    void flower(float x, float y, float size) //function to draw flowers
     {
-        strokeWeight(size);
-        stroke(random(120,255), random(255), random(255));
+        strokeWeight(size); 
+        stroke(random(120,255), random(255), random(255)); //draws random flowers
 
-        translate (x,y);
+        translate (x,y); 
 
-        for(int i =0; i<10; i++)
+        for(int i =0; i<10; i++) //10 petals on the flower
         {
-            rotate(TWO_PI/ 10);
-            line(0,0,3 * size, 0);
+            rotate(TWO_PI/ 10); //evenly spaced
+            line(0,0,3 * size, 0); 
         }
 
         strokeWeight(0);
-        fill(random(120,255), random(255), random(255));
+        fill(random(120,255), random(255), random(255)); //elipse colour
         ellipse(0, 0, 15, 15);
 
     }
