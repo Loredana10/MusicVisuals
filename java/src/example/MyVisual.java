@@ -10,7 +10,7 @@ import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
 // import java.awt.*;
 // import javax.swing.*;
-// import java.awt.geom.GeneralPath;
+// import jn ava.awt.geom.GeneralPath;
 
 public class MyVisual extends Visual {
     WaveForm wf;
@@ -405,7 +405,7 @@ public void draw() {
         float angleStep = TWO_PI / 6;
         float maxAmplitude = max(ab);
         float gap = 10; // Gap between hexagons
-        float maxOuterRadius = 400.0f + maxAmplitude;
+        float maxOuterRadius = 400.0f + maxAmplitude;//calculate max outer radius dynamically based on max amplitude
 
         
         for (int i = 0; i < numHexagons; i++) 
