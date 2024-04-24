@@ -233,6 +233,8 @@ public void draw() {
 
         case 2: //Loredana
 
+            background(0);
+
             //Calculating the sum and average of the samples
             //Learping each element in the buffer
             float average = 0;
@@ -257,20 +259,18 @@ public void draw() {
             // Increment angle for swinging motion
             angle += 0.02;
 
-            // Clear background
-            background(255);
-
+        
             // Calculate swinging motion
             float swing = sin(angle) * 50;
 
             //SPIDER 1
 
             //cobweb
-            stroke(0);
+            stroke(255);
             line(width / 2 + swing, 0, width / 2 + swing, height / 2);
 
             // Body
-            fill(0);
+            fill(255);
             ellipse(width / 2 + swing, height / 2, 30, 30);
 
             // Legs on right side
@@ -289,11 +289,11 @@ public void draw() {
 
             float offsetX = 300; // Positioning the second spider to the right
             //cobweb
-            stroke(0);
+            stroke(255);
             line(width / 2 + swing + offsetX, 0, width / 2 + swing + offsetX, height / 2.4f);
 
             // Body
-            fill(0);
+            fill(255);
             ellipse(width / 2 + swing + offsetX, height / 2.4f, 30, 30);
 
             // Legs on right side
@@ -312,11 +312,11 @@ public void draw() {
 
             float offsetX2 = -300; // Positioning the third spider to the left
             //cobweb
-            stroke(0);
+            stroke(255);
             line(width / 2 + swing + offsetX2, 0, width / 2 + swing + offsetX2, height / 2.4f);
 
             // Body
-            fill(0);
+            fill(255);
             ellipse(width / 2 + swing + offsetX2, height / 2.4f, 30, 30);
 
             // Legs on right side
