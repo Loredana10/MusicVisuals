@@ -1,8 +1,16 @@
 # Music Visualiser Project
 
-Name:
+Name: Ella Fahey
 
-Student Number: 
+Student Number: C22396101
+
+Name: Gráinne Bannister
+
+Student Number: C22331903
+
+Name: Loredana Bura
+
+Student Number: C22370523
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
@@ -14,10 +22,23 @@ Student Number:
 # Description of the assignment
 
 # Instructions
+**Ella:**
+**Gráinne:**
+**Loredana:**
 
 # How it works
+**Ella:**
+**Gráinne:**
+**Loredana:**
 
 # What I am most proud of in the assignment
+**Ella:**
+**Gráinne:**
+**Loredana:**
+
+# Screenshots
+
+# Youtube Video
 
 # Markdown Tutorial
 
