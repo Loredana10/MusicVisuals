@@ -350,24 +350,27 @@ public void draw() {
         break;
 
         case 3: 
-            background(0);
-            translate(width / 2, height / 2);
-            maxAmplitude = max(ab.toArray());
-            int numSegments = 400;
-            float segmentAngle = TWO_PI / numSegments;
-            float tunnelRadius = min(width, height) / 3;
+            background(0); //background to balck
+            translate(width / 2, height / 2); //translate origin to center of canvas
+            maxAmplitude = max(ab.toArray()); //find max value in the ab ArrayList and assign to maxAmplitude
+            int numSegments = 400; //num segment in tunnel
+            float segmentAngle = TWO_PI / numSegments; //angle of each segment
+            float tunnelRadius = min(width, height) / 3; //difine radius of tunnel
         
             for (int i = 0; i < numSegments; i++) {
             float angle = i * segmentAngle;
+
+            //calcuclate coordinates of start and end points of segment
             float x1 = cos(angle) * tunnelRadius;
             float y1 = sin(angle) * tunnelRadius;
             float x2 = cos(angle + segmentAngle) * tunnelRadius;
             float y2 = sin(angle + segmentAngle) * tunnelRadius;
+
             float freq = ab.get(i % ab.size()) * 3000; // Adjust frequency range
             float z1 = map(freq, 0, maxAmplitude * 10, -200, 200); // Adjust mapping to control tunnel depth
             float z2 = map(ab.get((i + 1) % ab.size()) * 3000, 0, maxAmplitude * 10, -200, 200);
         
-            stroke(map(i, 0, numSegments, 0, 255), 255, 255);
+            stroke(map(i, 0, numSegments, 0, 255), 255, 255); //set stroke color based on segment index
             line(x1, y1, z1, x2, y2, z2);
          }
         break;
@@ -414,7 +417,8 @@ public void draw() {
         
         for (int i = 0; i < numHexagons; i++) 
         {
-            float innerRadius = maxOuterRadius * (numHexagons - i) / numHexagons;
+            float innerRadius = maxOuterRadius * (numHexagons - i) / numHexagons;//ensures that innerRadius decreases as i increases,
+            // resulting in smaller inner radii towards the center of the hexagon arrangement.
             float brightness = map(ab[i % ab.length], 0, maxAmplitude, 50, 100); // Reactivity to music
             float newSize = map(ab[i % ab.length], 0, maxAmplitude, 50, 400); // Adjust size based on frequency
 
