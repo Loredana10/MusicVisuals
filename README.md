@@ -23,17 +23,23 @@ Student Number: C22370523
 
 # Instructions
 **Ella:**
+
 **Gráinne:**
+
 **Loredana:**
 
 # How it works
 **Ella:**
+
 **Gráinne:**
+
 **Loredana:**
 
 # What I am most proud of in the assignment
 **Ella:**
+
 **Gráinne:**
+
 **Loredana:**
 
 # Screenshots
