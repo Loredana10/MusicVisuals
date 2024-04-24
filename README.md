@@ -22,11 +22,7 @@ Student Number: C22370523
 # Description of the assignment
 
 # Instructions
-**Ella:**
 
-**Gráinne:**
-
-**Loredana:**
 
 # How it works
 **Ella:**
@@ -123,7 +119,12 @@ for(int x = 0 ; x < width ; x ++) {
 
 **Loredana:**
 
+What I am most proud of in this assignment is the implementation of the particles. At first, it was very challenging to conceptualise how to create a dynamic and visually appealing particle system, and I spent a lot of time experimenting and testing the code. Each obstacle presented a unique puzzle to solve, and through perseverance and some luck, I was able to overcome these challenges and develop a visualisation that exceeded my initial expectations. I am also proud of the team work that went into this project.Through effective communication and hard work, we were able to come up with interesting ideas that appeal to our unique strengths and interests, solve problems, and provide valuable feedback to one another.
+
 # Screenshots
+
+![image](https://github.com/Loredana10/MusicVisuals/assets/124152490/a64000c8-a031-4cb7-8309-d17ebdbc4cec)
+
 
 # Youtube Video
 
