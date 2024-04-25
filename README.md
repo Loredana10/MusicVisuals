@@ -22,7 +22,11 @@ Student Number: C22370523
 # Description of the assignment
 
 # Instructions
-
+- Fork this repository
+- Clone the repository
+- Compile program and run it
+- Use keys 0 to 5 to change the visuals
+- Enjoy :)
 
 # How it works
 **Ella:**
