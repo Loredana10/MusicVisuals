@@ -127,7 +127,6 @@ What I am most proud of in this assignment is the implementation of the particle
 
 ![Screenshot 2024-04-25 122903](https://github.com/Loredana10/MusicVisuals/assets/124162358/577eddf1-ae67-465c-8acf-0183d2e83bd0)
 ![Screenshot 2024-04-25 130805](https://github.com/Loredana10/MusicVisuals/assets/124162358/a8da3bfe-99aa-46a2-b7c9-167856d869a2)
-![Screenshot 2024-04-25 130802](https://github.com/Loredana10/MusicVisuals/assets/124162358/249ed3e7-9667-4bf5-b308-6141a3432759)
 ![image](https://github.com/Loredana10/MusicVisuals/assets/124162358/82ae1361-5d80-476f-8bcc-7c6c6aec9a56)
 
 ![Screenshot 2024-04-25 130746](https://github.com/Loredana10/MusicVisuals/assets/124162358/20458bab-a03d-41fe-a39c-395c38f45d96)
