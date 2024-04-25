@@ -123,7 +123,21 @@ What I am most proud of in this assignment is the implementation of the particle
 
 # Screenshots
 
+![Screenshot 2024-04-25 122839](https://github.com/Loredana10/MusicVisuals/assets/124162358/96d832c3-d660-48da-9b17-135b6a4b14e2)
+![Screenshot 2024-04-25 122903](https://github.com/Loredana10/MusicVisuals/assets/124162358/577eddf1-ae67-465c-8acf-0183d2e83bd0)
+![Screenshot 2024-04-25 130805](https://github.com/Loredana10/MusicVisuals/assets/124162358/a8da3bfe-99aa-46a2-b7c9-167856d869a2)
+![Screenshot 2024-04-25 130802](https://github.com/Loredana10/MusicVisuals/assets/124162358/249ed3e7-9667-4bf5-b308-6141a3432759)
+
+![Screenshot 2024-04-25 130746](https://github.com/Loredana10/MusicVisuals/assets/124162358/20458bab-a03d-41fe-a39c-395c38f45d96)
+
+![Screenshot 2024-04-25 130741](https://github.com/Loredana10/MusicVisuals/assets/124162358/a6a260e1-854c-40a0-b716-e86ed33697b3)
+
+![Screenshot 2024-04-25 130734](https://github.com/Loredana10/MusicVisuals/assets/124162358/291bbcca-97ac-42b8-8a93-a7f4bb9fd9b6)
+![Screenshot 2024-04-25 130717](https://github.com/Loredana10/MusicVisuals/assets/124162358/26b86095-4133-46dc-b042-605a61169d0f)
+
 ![image](https://github.com/Loredana10/MusicVisuals/assets/124152490/a64000c8-a031-4cb7-8309-d17ebdbc4cec)
+![image](https://github.com/Loredana10/MusicVisuals/assets/124162358/82ae1361-5d80-476f-8bcc-7c6c6aec9a56)
+
 
 
 # Youtube Video
