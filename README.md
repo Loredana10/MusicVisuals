@@ -33,6 +33,8 @@ Student Number: C22370523
 
 **Gráinne:**
 
+For my portion of my project, I choose to create a 3D object visual which would match the theme of our project - spiderman. I used a 3D object which I found online to be the main element in my visual. I did this by importing the shape and loading it using pShape, load image. To make the head spin, I used the rotateZ and rotateY functions to rotate the shape in a 360 degree rotation. Then for the visual which borders the spiderman head, I used a music wave representation.
+
 ```Java
 void drawWaveform(float amplitude, float x, float y, float centerX, float centerY) {
 	float distance = dist(x, y, centerX, centerY); // Calculate distance from center
