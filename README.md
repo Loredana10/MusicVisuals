@@ -33,7 +33,7 @@ Student Number: C22370523
 
 **Gráinne:**
 
-'''Java
+```Java
 void flower(float x, float y, float size) //function to draw flowers
 {
 strokeWeight(size); 
