@@ -34,6 +34,72 @@ Student Number: C22370523
 **Gráinne:**
 
 ```Java
+void drawWaveform(float amplitude, float x, float y, float centerX, float centerY) {
+	float distance = dist(x, y, centerX, centerY); // Calculate distance from center
+	float maxDistance = dist(0, 0, width / 2, height / 2); // Maximum distance from center
+	float mappedDistance = map(distance, 0, maxDistance, 0, 1); // Map distance to range [0, 1]
+	float newSize = map(amplitude, 0, 1, 10, 400) * mappedDistance; // Enlarge based on amplitude and distance
+	float hue = map(amplitude, 0, 1, 0, 255);
+	fill(hue, 255, 255);
+	noStroke();
+	rectMode(CENTER);
+	rect(x, y, newSize, newSize);
+    }
+```
+
+```Java
+        case 0: //Gráinne 
+        background(0);
+        lights();
+
+        ry += 0.02;
+
+        float centerX = width / 2;
+        float centerY = height / 2;
+        float stepX = width / (float)ab.size();
+        float stepY = height / (float)ab.size();
+
+        // Draw waveform on the top side
+        for (int x = 0; x < ab.size(); x++) {
+            float amplitude = ab.get(x);
+            float posX = x * stepX + stepX / 2;
+            float posY = stepY / 2;
+            drawWaveform(amplitude, posX, posY, centerX, centerY);
+        }
+
+        // Draw waveform on the right side
+        for (int y = 0; y < ab.size(); y++) {
+            float amplitude = ab.get(y);
+            float posX = width - stepX / 2;
+            float posY = y * stepY + stepY / 2;
+            drawWaveform(amplitude, posX, posY, centerX, centerY);
+        }
+
+        // Draw waveform on the bottom side
+        for (int x = 0; x < ab.size(); x++) {
+            float amplitude = ab.get(x);
+            float posX = x * stepX + stepX / 2;
+            float posY = height - stepY / 2;
+            drawWaveform(amplitude, posX, posY, centerX, centerY);
+        }
+
+        // Draw waveform on the left side
+        for (int y = 0; y < ab.size(); y++) {
+            float amplitude = ab.get(y);
+            float posX = stepX / 2;
+            float posY = y * stepY + stepY / 2;
+            drawWaveform(amplitude, posX, posY, centerX, centerY);
+        }  
+
+        translate(width/2, height/2 + 60, -250);
+        rotateZ(PI);
+        rotateY(ry);
+        fill(255, 0, 0);
+        shape(spider_head);
+        break;
+```
+
+```Java
 void flower(float x, float y, float size) //function to draw flowers
 {
 strokeWeight(size); 
@@ -52,6 +118,15 @@ fill(random(120,255), random(255), random(255)); //elipse colour
 ellipse(0, 0, 15, 15);
 
 }
+```
+
+```Java
+case 5: //Gráinne
+
+    flower(random(width), random(height), random(10,150));
+
+break;
+```
 
 **Loredana:**
 
