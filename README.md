@@ -33,6 +33,26 @@ Student Number: C22370523
 
 **Gráinne:**
 
+'''Java
+void flower(float x, float y, float size) //function to draw flowers
+{
+strokeWeight(size); 
+stroke(random(120,255), random(255), random(255)); //random color chosen for flowers
+
+translate (x,y); 
+
+for(int i =0; i<10; i++) //10 petals on the flower
+{
+    rotate(TWO_PI/ 10); //evenly spaced
+    line(0,0,3 * size, 0); 
+}
+
+strokeWeight(0);
+fill(random(120,255), random(255), random(255)); //elipse colour
+ellipse(0, 0, 15, 15);
+
+}
+
 **Loredana:**
 
 I worked on the particles visual and the hanging spiders visual. The particle visualisation was achieved by creating a large number of ellipse particles that move around the screen in a random manner. If the distance between particles is less than the radius specified, then the particles will be connected by a line. As the particles move away from each other, the line fades away. By increasing the speed and the number of particles, I was able to obtain a visual that resembles a moving spiderweb. I dealt with all the possibilities of the particles moving off screen in the code below:
