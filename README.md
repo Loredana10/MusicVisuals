@@ -145,8 +145,9 @@ What I am most proud of in this assignment is the implementation of the particle
 ![image](https://github.com/Loredana10/MusicVisuals/assets/124152490/a64000c8-a031-4cb7-8309-d17ebdbc4cec)
 
 
-
 # Youtube Video
+
+https://youtu.be/28JY8GFCsB0 
 
 # Markdown Tutorial
 
