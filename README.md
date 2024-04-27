@@ -33,7 +33,7 @@ Student Number: C22370523
 
 **Gráinne:**
 
-For my portion of my project, I choose to create a 3D object visual which would match the theme of our project - spiderman. I used a 3D object which I found online to be the main element in my visual. I did this by importing the shape and loading it using pShape, load image. To make the head spin, I used the rotateZ and rotateY functions to rotate the shape in a 360 degree rotation. Then for the visual which borders the spiderman head, I used a music wave representation.
+For my portion of my project, I choose to create a 3D object visual which would match the theme of our project - spiderman. I used a 3D object which I found online to be the main element in my visual. I did this by importing the shape and loading it using pShape, load image. To make the head spin, I used the rotateZ and rotateY functions to rotate the shape in a 360 degree rotation. Then for the visual which borders the spiderman head, I used a sound wave representation.
 
 ```Java
 void drawWaveform(float amplitude, float x, float y, float centerX, float centerY) {
@@ -101,6 +101,8 @@ void drawWaveform(float amplitude, float x, float y, float centerX, float center
         break;
 ```
 
+For my second visual, I choose to stick with the theme of the song and create a visual with flowers. To do this, I created flowers by using the stroke method to draw 10 petals and rotate them evenly using the PI constant. I then added an elipse in the middle of the flower to finish the flower shape. I filled the flowers with randomly generated colours. 
+
 ```Java
 void flower(float x, float y, float size) //function to draw flowers
 {
@@ -121,6 +123,8 @@ ellipse(0, 0, 15, 15);
 
 }
 ```
+
+I implemented the flower in my case to be created randomly. It will have a random width, random height and random size and will generate sporadically on the screen.  
 
 ```Java
 case 5: //Gráinne
@@ -217,6 +221,8 @@ for(int x = 0 ; x < width ; x ++) {
 **Ella:**
 
 **Gráinne:**
+
+I'm most proud of the spiderman head object as I had to go through the process of learning new applications to import it. When I found the shape I wanted to use online https://free3d.com/3d-model/spiderman-head-95908.html, I found out that I would have to change the stl file to an obj file. I did this by downloading an app called blender which enabled me to change it to an obj file and I also implemented the spiderman red colour in the mtl file. I found the process of converting the file and using functions in java processing such as rotate interesting, as I was able to play with how the spiderman head would move around the screen. This created a nice visual which suited the music and the overall theme of the project. I am also proud of how my team was able to work together from the start till the end of the project. We all contributed our best efforts when organising and planning the project which made the actual project easy and efficient. 
 
 **Loredana:**
 
