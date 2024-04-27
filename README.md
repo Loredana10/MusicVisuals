@@ -414,6 +414,7 @@ for(int x = 0 ; x < width ; x ++) {
 
 # What I am most proud of in the assignment
 **Ella:**
+I take great pride in the color implementation within my hexagon visual, especially considering the challenges I encountered during its creation. Initially, managing color transitions dynamically posed a significant hurdle. It required meticulous calibration and careful adjustment to ensure coherence with the music. Additionally, fine-tuning the color intensity and variation demanded a thorough understanding of the underlying algorithms. Despite these obstacles, I persisted and successfully integrated the color dynamics into the visualization. I'm incredibly proud of our team's collaboration throughout the project. Despite facing technical challenges and deadlines, we maintained open communication and supported each other. Each member brought unique skills and perspectives, enriching our problem-solving process. From brainstorming to debugging, we worked seamlessly, leveraging our strengths to overcome obstacles. Efficient task division and synchronized efforts ensured smooth progress and timely completion
 
 **Gráinne:**
 
