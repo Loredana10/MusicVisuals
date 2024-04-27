@@ -20,6 +20,7 @@ Student Number: C22370523
 - Check out the WaveForm and AudioBandsVisual for examples of how to call the Processing functions from other classes that are not subclasses of PApplet
 
 # Description of the assignment
+For our programming assignemnt, we delved into the realm of music visualization using Java Processing. Taking cues from "Sunflower" by Post Malone, a track from the Spiderman: Into the Spiderverse soundtrack, we set out to create six unique visualizations paying homage to the iconic Spiderman universe. Leveraging Java's capabilities, we merged music analysis algorithms with graphic rendering techniques, resulting in dynamic visuals that responded dynamically to the song's frequencies. From oscillating spider webs to pulsating flowers and dynamic hexagonal tunnels, each visualization captured the essence of the music while infusing elements inspired by the superhero saga. This project provided us with a hands-on opportunity to refine our object-oriented design skills, dive deeper into programming concepts, and unleash our creativity in visual programming.
 
 # Instructions
 - Fork this repository
