@@ -191,7 +191,37 @@ The Hexagon Visual incorporates various methods designed to create an engaging a
 
 ```
 
+For my second visual I created a Starburst-like visual. This component of the program creates a dynamic and visually engaging representation that emanates from the center of the canvas. Responding to the frequency data extracted from the audio input, it generates a pulsating pattern characterized by vibrant colors and shifting shapes, synchronizing seamlessly with the music's rhythm and intensity.
 
+```Java
+
+case 3: 
+            background(0); //background to black
+            translate(width / 2, height / 2); //translate origin to center of canvas
+            maxAmplitude = max(ab.toArray()); //find max value in the ab ArrayList and assign to maxAmplitude
+            int numSegments = 400; //num segment in tunnel
+            float segmentAngle = TWO_PI / numSegments; //angle of each segment
+            float tunnelRadius = min(width, height) / 3; //difine radius of tunnel
+        
+            for (int i = 0; i < numSegments; i++) {
+            float angle = i * segmentAngle;
+
+            //calcuclate coordinates of start and end points of segment
+            float x1 = cos(angle) * tunnelRadius;
+            float y1 = sin(angle) * tunnelRadius;
+            float x2 = cos(angle + segmentAngle) * tunnelRadius;
+            float y2 = sin(angle + segmentAngle) * tunnelRadius;
+
+            float freq = ab.get(i % ab.size()) * 3000; // Adjust frequency range
+            float z1 = map(freq, 0, maxAmplitude * 10, -200, 200); // Adjust mapping to control tunnel depth
+            float z2 = map(ab.get((i + 1) % ab.size()) * 3000, 0, maxAmplitude * 10, -200, 200);
+        
+            stroke(map(i, 0, numSegments, 0, 255), 255, 255); //set stroke color based on segment index
+            line(x1, y1, z1, x2, y2, z2);
+         }
+        break;
+
+```
 
 
 
