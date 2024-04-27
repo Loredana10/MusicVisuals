@@ -32,6 +32,170 @@ For our programming assignemnt, we delved into the realm of music visualization 
 # How it works
 **Ella:**
 
+Throughout the duraiton of the assignment I created two visuals, these include the Hexagon and Starburst visual. Firstly, I'll decribe how the hexagon visual works.
+
+The Hexagon Visual incorporates various methods designed to create an engaging and dynamic visualization inspired by hexagonal shapes and patterns. It includes methods such as drawHexagons, drawConfetti, drawStars, drawShootingStars, and drawLines, each contributing to the overall aesthetic and interactivity of the visualization. Additionally, Case 4 within the draw() method is dedicated to invoking the hexagon visual, orchestrating the rendering of hexagons, confetti particles, stars, and shooting stars based on the audio input's frequency. 
+
+```Java
+  case 4: 
+         //Ella
+            // hexagonTunnel.repaint()
+            colorMode(HSB); // Set color mode to HSB
+
+            drawHexagons(width / 2.0f, height / 2.0f, 400.0f + getAmplitude(), 20, getSmoothedBands());
+            float c = map(amplitude, 0, 500, 0, 255);
+            //fill(c, 0, 0);
+            fill(c, 255, 255);
+        
+        break;
+
+
+//hexagon, stars, shooting stars, confetti and lines all added for Ella's hexagon visual
+    void drawHexagons(float x, float y, float outerRadius, int numHexagons, float[] ab) 
+    {
+        if (ab == null) {
+            return; // Exit the method early if ab is null
+        }
+        float angleStep = TWO_PI / 6;
+        float maxAmplitude = max(ab);
+        float gap = 10; // Gap between hexagons
+        float maxOuterRadius = 400.0f + maxAmplitude;//calculate max outer radius dynamically based on max amplitude
+
+        
+        for (int i = 0; i < numHexagons; i++) 
+        {
+            float innerRadius = maxOuterRadius * (numHexagons - i) / numHexagons;//ensures that innerRadius decreases as i increases,
+            // resulting in smaller inner radii towards the center of the hexagon arrangement.
+            float brightness = map(ab[i % ab.length], 0, maxAmplitude, 50, 100); // Reactivity to music
+            float newSize = map(ab[i % ab.length], 0, maxAmplitude, 50, 400); // Adjust size based on frequency
+
+
+            if (i % 2 == 0) {
+                // Set blue color (RGB values)
+                fill(0, 0, 255, brightness); // Blue color
+            } else {
+                // Set orange color (RGB values)
+                fill(255, 165, 0, brightness); // Orange color
+            }
+
+             // Draw the hexagon with the adjusted size
+            drawHexagon(x, y, newSize);
+
+            // Set the fill color for confetti (random colors)
+            float confettiHue = random(360);
+            float confettiSaturation = random(90, 255); // Random saturation between 90 and 255
+            float confettiBrightness = random(90, 255); // Random brightness between 90 and 255
+            fill(confettiHue, confettiSaturation, confettiBrightness);
+
+            beginShape();
+            for (int j = 0; j < 6; j++) {
+                float angle = j * angleStep;
+                float hx = x + cos(angle) * innerRadius;
+                float hy = y + sin(angle) * innerRadius;
+                vertex(hx, hy);
+            }
+            endShape(CLOSE);
+
+            // Draw stars, circles, rectangles, and shooting stars in the gap
+            drawStars(x, y, maxOuterRadius, innerRadius, ab[i % ab.length]);
+            //drawShootingStars(x, y, outerRadius, innerRadius, ab[i % ab.length]);
+            drawConfetti(x, y, innerRadius, maxOuterRadius, ab[i % ab.length]);
+
+
+            maxOuterRadius -= gap; // Adjust the outer radius for the next hexagon
+        }
+    }
+
+    void drawHexagon(float x, float y, float size) {
+        float angleStep = TWO_PI / 6;
+        beginShape();
+        for (int j = 0; j < 6; j++) {
+            float angle = j * angleStep;
+            float hx = x + cos(angle) * size;
+            float hy = y + sin(angle) * size;
+            vertex(hx, hy);
+        }
+        endShape(CLOSE);
+    }
+    
+    void drawLines(float x1, float y1, float x2, float y2) {
+        stroke(255); // Set the color of the lines to white
+        line(x1, y1, x2, y2); // Draw a line between the given points
+    }
+    
+    void drawStars(float x, float y, float outerRadius, float innerRadius, float amplitude) {
+        float gap = 10; // Gap between hexagons
+        int numStars = floor((outerRadius - innerRadius) / gap); // Number of stars based on the gap size
+        float minStarSize = 1;
+        float maxStarSize = 3;
+
+        float previousStarX = x;
+        float previousStarY = y;
+
+        // Set purple color (RGB values)
+        fill(128, 0, 128); // Purple color
+
+        for (int i = 0; i < numStars; i++) {
+            float randomAngle = random(TWO_PI);
+            float randomDistance = random(innerRadius, outerRadius);
+            float starX = x + cos(randomAngle) * randomDistance;
+            float starY = y + sin(randomAngle) * randomDistance;
+            float starSize = random(minStarSize, maxStarSize);
+            ellipse(starX, starY, starSize, starSize);
+
+            // Call the drawLines function to draw lines between stars
+            drawLines(starX, starY, previousStarX, previousStarY);
+        }
+    }
+    
+    
+    void drawShootingStars(float x, float y, float outerRadius, float innerRadius, float amplitude) {
+        // Draw shooting stars between hexagons with a different color
+        float gap = 10; // Gap between hexagons
+        int numStars = floor((outerRadius - innerRadius) / gap); // Number of shooting stars based on the gap size
+        float minStarSize = 1;
+        float maxStarSize = 3;
+
+        // Set shooting star color (RGB values)
+        fill(255, 255, 0); // Yellow color
+
+        for (int i = 0; i < numStars; i++) {
+            float randomAngle = random(TWO_PI);
+            float randomDistance = random(innerRadius, outerRadius);
+            float starX = x + cos(randomAngle) * randomDistance;
+            float starY = y + sin(randomAngle) * randomDistance;
+            float starSize = random(minStarSize, maxStarSize);
+            ellipse(starX, starY, starSize, starSize);
+        }
+    }
+    
+    void drawConfetti(float x, float y, float innerRadius, float outerRadius, float amplitude) {
+        int numConfetti = 50; // Number of confetti particles
+        float minConfettiSize = 2;
+        float maxConfettiSize = 5;
+
+        for (int i = 0; i < numConfetti; i++) {
+            // Random position within the hexagon
+            float randomAngle = random(TWO_PI);
+            float randomDistance = random(innerRadius, outerRadius);
+            float confettiX = x + cos(randomAngle) * randomDistance;
+            float confettiY = y + sin(randomAngle) * randomDistance;
+
+            // Random confetti size
+            float confettiSize = random(minConfettiSize, maxConfettiSize);
+
+            // Draw confetti particle
+            ellipse(confettiX, confettiY, confettiSize, confettiSize);
+        }
+    }
+
+```
+
+
+
+
+
+
 **Gráinne:**
 
 For my portion of my project, I choose to create a 3D object visual which would match the theme of our project - spiderman. I used a 3D object which I found online to be the main element in my visual. I did this by importing the shape and loading it using pShape, load image. To make the head spin, I used the rotateZ and rotateY functions to rotate the shape in a 360 degree rotation. Then for the visual which borders the spiderman head, I used a sound wave representation.
